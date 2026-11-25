@@ -953,6 +953,25 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
   .fgrid{gap:14px 10px!important}
   .legal{font-size:10.5px}
 }
+/* ---------- show illustrations in full (no cropping) ---------- */
+.hero{height:auto;min-height:0;display:block}
+.hero > img{position:relative;inset:auto;display:block;width:100%;height:auto;object-fit:fill}
+.hero-cap{position:absolute;left:0;right:0;bottom:0}
+.band{height:auto}
+.band img{position:relative;inset:auto;display:block;width:100%;height:auto;transform:none!important}
+.sv-img,.sv-thumb{aspect-ratio:auto}
+.sv-img img,.sv-thumb img{display:block;height:auto}
+.pf-grid{display:block!important;columns:3;column-gap:clamp(10px,1.2vw,16px)}
+.pf-item{display:block;width:100%;margin:0 0 clamp(10px,1.2vw,16px);break-inside:avoid}
+.pf-item img{position:relative;inset:auto;display:block;height:auto}
+.pf-item.big{column-span:all}
+.pf-item.soon{display:grid;aspect-ratio:4/3}
+@media (max-width:600px){
+  .hero-cap{position:relative;padding-top:14px}
+  .hero::before{background:linear-gradient(180deg,rgba(20,21,20,.55) 0%,transparent 22%)}
+  .pf-grid{columns:2;column-gap:6px}
+  .pf-item{margin-bottom:6px}
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
