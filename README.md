@@ -41,4 +41,4 @@ Security notes:
 - Players can only read their own row and only change nick / handle / avatar.
 - `used`, `history` and `claimed` change only through `pull_gacha()` and the admin functions.
 - Orders and gacha rates are admin-only, so visitors can't see the odds.
-- Email confirmation is on by default in Supabase; new users must click the link in their email before signing in.
+- Email confirmation is turned OFF (Authentication → Sign In / Providers → Email → Confirm email), so new accounts can pull right away. Turn it back on together with custom SMTP if fake accounts become a problem.
