@@ -1210,6 +1210,8 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
   </div>
 </footer>
 
+<script src="js/supabase-config.js"></script>
+<script src="js/sb.js"></script>
 <script>
 (()=>{
   /* ---------- portofolio ---------- */
@@ -1295,7 +1297,8 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
   const wait=ms=>new Promise(r=>setTimeout(r,reduce?0:ms));
   const colors={sr:'var(--gold)',r:'var(--red)',d10:'#ff8a5b',c:'var(--c-gray)',d5:'#8fb8d9'};
   /* ---------- akun (1 akun = 1x gacha) ---------- */
-  try{ACC.out=localStorage.getItem('seeds-out')==='1'}catch(_){}
+  const SB=window.SEEDS_SB||null;
+  try{ACC.out=!SB&&localStorage.getItem('seeds-out')==='1'}catch(_){}
   const setOut=v=>{ACC.out=v;try{v?localStorage.setItem('seeds-out','1'):localStorage.removeItem('seeds-out')}catch(_){}};
   const AV=['#ff3b3c','#d9d9d9','#f5c451','#6fc08f'];
   const AVN=['Red','Gray','Gold','Green'];
@@ -1303,12 +1306,12 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
   const acct=document.getElementById('acct'),demo=document.getElementById('democount'),navlogin=document.getElementById('navlogin');
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const left=()=>Math.max(0,QUOTA-(ACC.me?.used||0));
-  const mode=()=>ACC.me&&!ACC.out?'player':ACC.me&&ACC.out?'out':(ACC.db&&ACC.uid&&ACC.state==='ready')?'signup':ACC.state==='loading'?'loading':'demo';
+  const mode=()=>ACC.me&&!ACC.out?'player':ACC.me&&ACC.out?'out':(ACC.db&&ACC.uid&&ACC.state==='ready')?'signup':ACC.state==='guest'?'guest':ACC.state==='loading'?'loading':'demo';
   function canPull(){const m=mode();return m==='demo'||(m==='player'&&left()>0)}
   function updateBtn(){
     if(busy)return;const m=mode();
     if(m==='signup'){btn.disabled=false;btn.textContent='Create an account to pull →';return}
-    if(m==='out'){btn.disabled=false;btn.textContent='Sign in to pull →';return}
+    if(m==='out'||m==='guest'){btn.disabled=false;btn.textContent='Sign in to pull →';return}
     if(m==='player'&&left()<=0){btn.disabled=true;btn.textContent='Pull already used';return}
     btn.disabled=m==='loading';btn.textContent=pack.classList.contains('torn')&&m==='demo'?'Open Another Pack (demo) ✦':'Open Pack ✦';
   }
@@ -1317,6 +1320,7 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
     const m=mode();demo.hidden=m!=='demo';
     if(m==='loading'){acct.innerHTML='<p class="acct-note">Loading account…</p>'}
     else if(m==='demo'){acct.innerHTML=`<h3>Demo mode</h3><p class="acct-note">${ACC.state==='slow'?'Account data can\'t be reached yet. ':''}Demo results aren\'t saved. Create an account to get 1 recorded gacha pull.</p><a class="btn" href="#masuk">Sign in / Sign up</a>`}
+    else if(m==='guest'){acct.innerHTML=`<h3>Get your free pull</h3><p class="acct-note">Every account gets <b style="color:var(--gold)">1 gacha pull</b>. You can still order commissions without one.</p><a class="btn red" href="#masuk">Sign in / Sign up</a>`}
     else if(m==='out'){acct.innerHTML=`<h3>You\'re signed out</h3><p class="acct-note">Sign in again to see your gacha pull and prize.</p><a class="btn red" href="#masuk">Sign in</a>`}
     else if(m==='signup'){acct.innerHTML=`<h3>No account yet</h3><p class="acct-note">Every account gets <b style="color:var(--gold)">1 gacha pull</b>. You can still order commissions without one.</p><a class="btn red" href="#masuk">Sign up now</a>`}
     else{
@@ -1353,7 +1357,7 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
       <p class="err" id="lg-err" hidden></p>
       <button class="btn red" type="submit">Sign in</button>
     </form>`}
-    <p class="proto">Prototype: your email and password are not sent or stored. On the real website this connects to a user database. Here, accounts use your claude.ai sign-in.</p>`;
+    ${SB?'':'<p class="proto">Prototype: your email and password are not sent or stored. On the real website this connects to a user database. Here, accounts use your claude.ai sign-in.</p>'}`;
     document.getElementById('t-daftar').onclick=()=>{tab='daftar';lgTouched=true;renderLogin()};
     document.getElementById('t-masuk').onclick=()=>{tab='masuk';lgTouched=true;renderLogin()};
     document.getElementById('f-daftar')?.addEventListener('submit',signup);
@@ -1368,6 +1372,12 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
     if(nick.length<2)return showErr('Nickname needs at least 2 characters.');
     if(!/^\S+@\S+\.\S+$/.test(email))return showErr('That email doesn\'t look right.');
     if(pass.length<8)return showErr('Password needs at least 8 characters.');
+    if(SB){const b=document.getElementById('su-btn');b.disabled=true;b.textContent='Creating account…';
+      try{const r=await SB.signUp({email,password:pass,nick,handle,avatar:av});
+        if(r.needsConfirm){ACC.flash='Almost done! Check your email ('+email+') and click the confirmation link, then sign in here.';tab='masuk';lgTouched=true;renderLogin();return}
+        location.hash='#gacha';location.reload()}
+      catch(x){showErr(/registered|exists/i.test(x?.message||'')?'That email already has an account. Use the Sign in tab.':(x?.message||'Couldn\'t create the account. Try again in a moment.'));b.disabled=false;b.textContent='Create account & get 1 pull'}
+      return}
     if(mode()==='out')return showErr('An account already exists for this sign-in. Use the Sign in tab.');
     if(mode()!=='signup')return showErr('This prototype needs a claude.ai sign-in to save accounts. Open this page while signed in.');
     const b=document.getElementById('su-btn');b.disabled=true;b.textContent='Creating account…';
@@ -1381,14 +1391,21 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
       b.disabled=false;b.textContent='Create account & get 1 pull';
     }
   }
-  function login(e){
+  async function login(e){
     e.preventDefault();
+    if(SB){const email=document.getElementById('li-email').value.trim(),pass=document.getElementById('li-pass').value;
+      if(!email||!pass)return showErr('Enter your email and password.');
+      const b=e.target.querySelector('button[type=submit]');b.disabled=true;b.textContent='Signing in…';
+      try{await SB.signIn(email,pass);location.hash='#akun';location.reload()}
+      catch(x){showErr(/confirm/i.test(x?.message||'')?'Please confirm your email first (check your inbox).':'Wrong email or password.');b.disabled=false;b.textContent='Sign in'}
+      return}
     if(mode()==='player'){location.hash='#akun';return}
     if(mode()==='out'){setOut(false);ACC.flash='';renderAcct();location.hash='#akun';return}
     showErr(mode()==='signup'?'No account found. Sign up first in the Sign up tab.':'This prototype needs a claude.ai sign-in to read accounts.');
   }
 
   async function recordPull(id){
+    if(SB){if(mode()==='player')ACC.me={...ACC.me,used:(ACC.me.used||0)+1,history:[{id,at:Date.now()},...(ACC.me.history||[])]};return} // server already saved it; mirror locally until realtime refreshes
     if(mode()!=='player')return;
     const m=ACC.me;
     const data={nick:m.nick,handle:m.handle,avatar:m.avatar,createdAt:m.createdAt,used:(m.used||0)+1,history:[{id,at:Date.now()},...(m.history||[])].slice(0,5),claimed:!!m.claimed};
@@ -1407,7 +1424,7 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
   ubtn.addEventListener('click',e=>{e.stopPropagation();toggleMenu(udrop.hidden)});
   document.addEventListener('click',e=>{if(!udrop.hidden&&!e.target.closest('#umenu'))toggleMenu(false)});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!udrop.hidden){toggleMenu(false);ubtn.focus()}});
-  function logout(){setOut(true);ACC.flash='You\'re signed out. See you again!';toggleMenu(false);renderAcct();location.hash='#masuk'}
+  async function logout(){if(SB){toggleMenu(false);await SB.signOut();location.hash='#masuk';location.reload();return}setOut(true);ACC.flash='You\'re signed out. See you again!';toggleMenu(false);renderAcct();location.hash='#masuk'}
   document.getElementById('ulogout').addEventListener('click',logout);
 
   /* ---------- mailbox ---------- */
@@ -1634,12 +1651,12 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
     try{{const o={};KEYS.forEach(k=>o[k]=+$a('g-'+k).value||0);await ACC.db.doc('settings/gacha').set(o)}$a('g-ok').hidden=false;setTimeout(()=>$a('g-ok').hidden=true,2500)}catch(_){ }$a('g-save').disabled=false});
 
   (async()=>{
-    const use=n=>window.claude?.use?Promise.resolve(window.claude.use(n)).catch(()=>null):Promise.resolve(null);
+    const use=n=>SB?SB.use(n).catch(()=>null):window.claude?.use?Promise.resolve(window.claude.use(n)).catch(()=>null):Promise.resolve(null);
     const [db,user]=await Promise.all([use('db'),use('user')]);
     ACC.db=db;ACC.uid=user?await user.id():null;ACC.admin=user?await user.canEdit():false;ACC.adminResolved=true;route();
     // peluang gacha dibaca semua pengunjung
     if(db){db.doc('settings/gacha').onSnapshot(s=>{if(s.exists){const d=s.data();if(KEYS.reduce((a,k)=>a+(+d[k]||0),0)>0){KEYS.forEach(k=>{if(d[k]!=null)RATES[k]=+d[k]})}}applyRates();if(ACC.admin)fillGForm()},()=>{});}
-    if(!db||!ACC.uid){ACC.state='demo';renderAcct();return}
+    if(!db||!ACC.uid){ACC.state=SB&&db?'guest':'demo';renderAcct();return}
     let first=true;const timer=setTimeout(()=>{if(first){ACC.state='slow';renderAcct()}},10000);
     db.doc('players/'+ACC.uid).onSnapshot(s=>{ACC.me=s.exists?s.data():null;if(first&&!s.metadata.fromCache){first=false;clearTimeout(timer);ACC.state='ready'}if(!first)renderAcct()},()=>{clearTimeout(timer);first=false;ACC.state='demo';renderAcct()});
     if(ACC.admin){
@@ -1679,12 +1696,14 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
   if(sfxBtn){sfxBtn.onclick=()=>{SFX.on=!SFX.on;paintSfx();SFX.play('click')};paintSfx()}else SFX.on=true;
 
   async function open(){
-    if(mode()==='signup'||mode()==='out'){location.hash='#masuk';return}
+    if(mode()==='signup'||mode()==='out'||mode()==='guest'){location.hash='#masuk';return}
     if(busy||!canPull())return;busy=true;btn.disabled=true;res.hidden=true;
     if(pack.classList.contains('torn')){ // reset to a fresh pack first
       pull.innerHTML='';ann.innerHTML='';stage.classList.remove('lit','beam','opened');pack.classList.remove('torn');await wait(450);
     }
-    const id=roll();
+    let id;
+    if(SB&&mode()==='player'){try{id=await SB.pull()}catch(x){busy=false;res.style.setProperty('--rc','var(--red)');res.innerHTML=`<small>Couldn't open the pack</small><p>${/already/i.test(x?.message||'')?'Your pull has already been used.':'Something went wrong. Please try again in a moment.'}</p>`;res.hidden=false;updateBtn();return}}
+    else id=roll();
     gEl.classList.add('charging');stage.classList.add('opened');SFX.play('charge');await wait(500);
     gEl.classList.remove('charging');
     pack.classList.add('shake');SFX.play('shake');await wait(700);
