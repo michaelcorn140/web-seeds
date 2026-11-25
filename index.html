@@ -870,12 +870,88 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
 @media (max-width:900px){.steps4{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:640px){.sec-head{flex-direction:column;align-items:flex-start}}
 @media (max-width:480px){.steps4{grid-template-columns:1fr}}
+/* ---------- compact mobile (dense, app-like) ---------- */
+@media (max-width:600px){
+  body{font-size:13.5px}
+  :root{--gut:max(14px,env(safe-area-inset-left,0px))}
+  nav .wrap{height:58px}
+  .btn{font-size:11.5px;padding:8px 15px;gap:7px;border-width:1.5px}
+  .btn.big{padding:12px 18px;font-size:13px}
+  /* section heads: title + action on one row */
+  .sec-head,.sv-head{flex-direction:row!important;align-items:flex-end!important;gap:10px;margin-bottom:16px}
+  .sec-head h2,.sv-head h2{font-size:20px;letter-spacing:-.01em}
+  .sec-head p,.sv-head p{margin-top:4px;font-size:11.5px;line-height:1.35}
+  .sec-head > .btn,.sv-head .btn,.sv-cta{font-size:10px;padding:6px 11px}
+  /* about */
+  .intro{padding-block:44px}
+  .intro p{font-size:13.5px;line-height:1.6}
+  .intro .salam{font-size:9.5px;margin-bottom:10px}
+  .band{height:170px}
+  .band .cap{font-size:9px;padding:4px 9px}
+  /* services: featured + 2-col mini cards */
+  .svc3{padding:44px 0}
+  .sv-grid{gap:14px}
+  .sv-img{aspect-ratio:16/9;margin-bottom:10px;border-radius:6px}
+  .sv-cat{font-size:9.5px;margin-bottom:3px}
+  .sv-main h3{font-size:15px;margin-bottom:4px}
+  .sv-main p{font-size:12.5px;line-height:1.5}
+  .sv-list{grid-template-columns:1fr 1fr;gap:10px}
+  .sv-item{grid-template-columns:1fr!important;gap:6px;padding:6px;border:1px solid var(--ink-3);border-radius:8px;background:rgba(0,0,0,.2)}
+  .sv-thumb{aspect-ratio:16/10;border-radius:5px}
+  .sv-txt{gap:2px}
+  .sv-txt strong{font-size:11.5px}
+  .sv-txt > span:not(.sv-cat){display:none}
+  .sv-txt em{font-size:10px}
+  /* portfolio: 3-col dense grid */
+  .pf{padding-block:44px}
+  .pf .sec-head{flex-direction:column!important;align-items:flex-start!important}
+  .pf-filter{gap:5px!important}
+  .pf-filter button{font-size:10px!important;padding:4px 9px!important}
+  .pf-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;grid-auto-rows:92px!important;gap:6px!important;grid-auto-flow:dense}
+  .pf-item{border-radius:8px}
+  .pf-item.big{grid-column:span 3!important;grid-row:span 2!important}
+  .pf-item.wide{grid-column:span 2!important}
+  .pf-cap{left:8px;right:8px;bottom:7px}
+  .pf-cap em{font-size:8.5px}
+  .pf-cap strong{font-size:11.5px}
+  .pf-item.big .pf-cap strong{font-size:18px}
+  .pf-cap small{display:none}
+  .pf-item.big .pf-cap small{display:block;font-size:10px}
+  .pf-zoom{display:none}
+  .pf-item.soon .frog{height:38%}
+  /* team: 3-col mini cards */
+  .team{padding-top:44px}
+  .team-row{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important}
+  .tm{border-radius:7px}
+  .tm-no{top:7px;left:8px;font-size:8.5px}
+  .tm-body{left:8px!important;right:6px!important;bottom:32px!important;gap:1px}
+  .tm-body strong{font-size:13px!important}
+  .tm-body strong::after{width:14px;height:2px;margin-top:4px}
+  .tm-body span{font-size:8.5px!important;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .tm-soc{left:8px!important;bottom:8px!important;gap:4px;flex-direction:row!important}
+  .tm-soc a{width:20px;height:20px}
+  .tm-soc svg{width:10px;height:10px}
+  /* how to order: 2x2 */
+  .order{padding-block:44px}
+  .steps4{grid-template-columns:1fr 1fr!important;gap:8px}
+  .steps4 li{padding:12px;gap:5px;border-radius:8px}
+  .steps4 li::before{font-size:9.5px}
+  .steps4 strong{font-size:12px}
+  .steps4 span{font-size:11px;line-height:1.4}
+  /* community + footer */
+  .comm{padding-block:56px 110px}
+  .comm p{font-size:12.5px;margin:8px auto 14px}
+  footer{padding-block:28px 30px;font-size:12px}
+  .fgrid{gap:14px 10px!important}
+  .legal{font-size:10.5px}
+}
 /* ---------- show illustrations in full (no cropping) ---------- */
-/* desktop/tablet only; mobile keeps the original full-screen hero */
+/* hero: full illustration on desktop/tablet; on mobile the hero stays full-screen */
 @media (min-width:601px){
 .hero{height:auto;min-height:0;display:block}
 .hero > img{position:relative;inset:auto;display:block;width:100%;height:auto;object-fit:fill}
 .hero-cap{position:absolute;left:0;right:0;bottom:0}
+}
 .band{height:auto}
 .band img{position:relative;inset:auto;display:block;width:100%;height:auto;transform:none!important}
 .sv-img,.sv-thumb{aspect-ratio:auto}
@@ -885,7 +961,7 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
 .pf-item img{position:relative;inset:auto;display:block;height:auto}
 .pf-item.big{column-span:all}
 .pf-item.soon{display:grid;aspect-ratio:4/3}
-}
+@media (max-width:600px){.pf-grid{columns:2;column-gap:6px}.pf-item{margin-bottom:6px}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
