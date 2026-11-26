@@ -870,6 +870,48 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
 @media (max-width:900px){.steps4{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:640px){.sec-head{flex-direction:column;align-items:flex-start}}
 @media (max-width:480px){.steps4{grid-template-columns:1fr}}
+/* ---------- top bar (black, centered logo) + one page per nav item ---------- */
+nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:#000;padding-top:env(safe-area-inset-top,0px);border-bottom:1px solid #161616}
+.tb{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:64px;padding:0 clamp(16px,2.6vw,40px);gap:16px}
+.tb-l{display:flex;align-items:center;min-width:0}
+.topbar .navlinks{display:flex;gap:clamp(16px,1.8vw,28px);font:800 13px var(--display);text-transform:uppercase;letter-spacing:.02em;white-space:nowrap}
+.topbar .navlinks a{opacity:1;color:#fff;position:relative;padding:6px 0}
+.topbar .navlinks a:hover,.topbar .navlinks a[aria-current]{color:var(--red)}
+.topbar .navlinks .gl{color:var(--gold)}
+.topbar .navlogo{justify-self:center;display:flex;align-items:center;gap:7px;background:var(--red);color:#fff;border-radius:5px;padding:6px 12px 6px 9px;font:900 17px/1 var(--display);letter-spacing:-.03em;box-shadow:0 0 0 2px rgba(255,59,60,.25)}
+.topbar .navlogo .frog{height:24px;--c:#fff}
+.topbar .navlogo:hover{filter:brightness(1.08)}
+.topbar .navr{justify-self:end;gap:4px}
+.topbar .ico{opacity:1;color:#fff;width:34px;height:34px}
+.topbar .ico svg{width:16px;height:16px}
+.tb-div{width:1px;height:26px;background:#2a2a2a;margin:0 8px}
+.topbar #navlogin{padding:10px 20px;font-size:13px;border-radius:999px;display:inline-flex;background:var(--red);color:#fff;border:0}
+.topbar #navlogin[hidden]{display:none}
+.topbar #navlogin:hover{background:#fff;color:var(--red)}
+#navgacha{display:none!important}
+.tb-burger{display:none;width:38px;height:38px;border:0;background:none;padding:10px 8px;cursor:pointer;flex-direction:column;justify-content:center;gap:6px}
+.tb-burger span{display:block;height:2px;background:#fff;border-radius:2px;transition:transform .25s}
+.menu-open .tb-burger span:first-child{transform:translateY(4px) rotate(45deg)}
+.menu-open .tb-burger span:last-child{transform:translateY(-4px) rotate(-45deg)}
+.hero{height:calc(100vh - 64px);height:calc(100svh - 64px)}
+.gacha{padding-top:24px}
+.akun,.login,.adminpage{padding-top:40px}
+[data-pg]:not(.hero){min-height:calc(100svh - 64px - 160px)}
+@media (max-width:1100px){
+  .tb-burger{display:flex}
+  .topbar .navlinks{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;background:#000;border-bottom:1px solid #1d1d1d;padding:6px clamp(16px,2.6vw,40px) 14px;font-size:15px}
+  .topbar .navlinks a{padding:12px 0;border-bottom:1px solid #141414}
+  .menu-open .topbar .navlinks{display:flex}
+}
+@media (max-width:560px){
+  .tb{height:58px;gap:8px}
+  .topbar .navlogo span{display:none}
+  .topbar .navlogo{padding:6px 8px}
+  .topbar .ico{display:none}
+  .tb-div{display:none}
+  .topbar #navlogin{padding:8px 14px;font-size:12px}
+  .hero{height:calc(100svh - 58px)}
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -878,15 +920,20 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
   <symbol id="i-v" viewBox="0 0 24 24"><path d="M3 4h4.2L12 15.5 16.8 4H21l-7.4 16h-3.2z"/></symbol>
 </svg>
 
-<nav>
-  <div class="wrap">
-    <a class="navlogo" href="#top"><i class="frog" aria-hidden="true"></i><span>Seeds<br>Studio.</span></a>
-    <div class="navlinks"><a href="#tentang">About</a><a href="#layanan">Services</a><a href="#karya">Portfolio</a><a href="#tim">Team</a><a href="#pesan">How to order</a><a href="#gacha" class="gl">Gacha ✦</a></div>
+<nav class="topbar">
+  <div class="tb">
+    <div class="tb-l">
+      <button type="button" class="tb-burger" id="tbBurger" aria-label="Menu" aria-expanded="false" aria-controls="tbMenu"><span></span><span></span></button>
+      <div class="navlinks" id="tbMenu"><a href="#tentang">About</a><a href="#layanan">Services</a><a href="#karya">Portfolio</a><a href="#tim">Team</a><a href="#pesan">How to order</a><a href="#gacha" class="gl">Gacha ✦</a></div>
+    </div>
+    <a class="navlogo" href="#top" aria-label="Seeds Studio home"><i class="frog" aria-hidden="true"></i><span>Seeds Studio.</span></a>
     <div class="navr">
+      <a class="ico" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
       <a class="ico" href="https://x.com" target="_blank" rel="noopener" aria-label="X"><svg><use href="#i-x"/></svg></a>
-      <a class="btn" href="#gacha" id="navgacha">Gacha</a>
+      <a class="ico" href="https://vgen.co" target="_blank" rel="noopener" aria-label="VGen"><svg><use href="#i-v"/></svg></a>
+      <span class="tb-div" aria-hidden="true"></span>
       <div class="umenu" id="umenu">
-        <a class="btn" href="#masuk" id="navlogin">Sign in</a>
+        <a class="btn red" href="#masuk" id="navlogin">Sign in</a>
         <button type="button" class="ubtn" id="ubtn" aria-haspopup="true" aria-expanded="false" aria-controls="udrop" hidden><span class="uav"><i class="av" id="uav"></i></span><span class="unick" id="unick">Account</span><span aria-hidden="true">▾</span></button>
         <div class="udrop" id="udrop" role="menu" hidden>
           <div class="uhead" id="uhead"></div>
@@ -902,7 +949,7 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
 
 <div id="home">
 
-<header class="hero" id="top">
+<header class="hero" id="top" data-pg="home">
   <img src="featured.jpg" alt="Seeds Studio illustration: an anime girl eating ramen at a night stall with a white cat and a frog">
   <div class="wrap hero-cap">
     <div>
@@ -918,7 +965,7 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
   <a class="scrollcue" href="#tentang" aria-label="Scroll down"></a>
 </header>
 
-<section class="intro" id="tentang">
+<section class="intro" id="tentang" data-pg="tentang">
   <i class="batik l" aria-hidden="true"></i><i class="batik r" aria-hidden="true"></i>
   <div class="wrap">
     <span class="salam"><b lang="jv">ꦱꦸꦒꦼꦁꦫꦮꦸꦃ</b>Sugeng rawuh · Welcome</span>
@@ -927,9 +974,9 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
   </div>
 </section>
 
-<div class="band"><img class="par" src="samurai.jpg" alt="Anime illustration of a white-haired swordswoman drawing a katana against a red background" style="object-position:50% 35%"><span class="cap">Seeds Studio · Jogja</span></div>
+<div class="band" data-pg="tentang"><img class="par" src="samurai.jpg" alt="Anime illustration of a white-haired swordswoman drawing a katana against a red background" style="object-position:50% 35%"><span class="cap">Seeds Studio · Jogja</span></div>
 
-<section class="svc3" id="layanan">
+<section class="svc3" id="layanan" data-pg="layanan">
   <div class="wrap">
     <div class="sv-head">
       <div><h2>Services</h2><p>Four core commissions for creators and VTubers. <span class="tag">sample prices</span></p></div>
@@ -947,7 +994,7 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
   </div>
 </section>
 
-<section class="pf" id="karya">
+<section class="pf" id="karya" data-pg="karya">
   <div class="wrap">
     <div class="sec-head">
       <div><h2>Portfolio</h2><p>Selected works from the Seeds team, 2026.</p></div>
@@ -981,7 +1028,7 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
 </section>
 
 
-<section class="team" id="tim">
+<section class="team" id="tim" data-pg="tim">
   <div class="wrap sec-head"><div><h2>Team Management</h2><p>The people behind every Seeds piece.</p></div><a class="btn red" href="#pesan">Work with us <span aria-hidden="true">→</span></a></div>
   <div class="wrap team-panel">
     <div class="team-row">
@@ -1028,7 +1075,7 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
   </div>
 </section>
 
-<section class="order" id="pesan">
+<section class="order" id="pesan" data-pg="pesan">
   <div class="wrap">
     <div class="sec-head"><div><h2>How to Order</h2><p>Four simple steps. Ordering <b>needs no account</b>; accounts are only for <a href="#gacha">Seeds Gacha</a>.</p></div><a class="btn red" href="https://vgen.co" target="_blank" rel="noopener">Order on VGen <span aria-hidden="true">→</span></a></div>
     <ol class="steps4">
@@ -1040,7 +1087,7 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
   </div>
 </section>
 
-<section class="comm">
+<section class="comm" data-pg="home">
   <img src="street.jpg" alt="" aria-hidden="true">
   <div class="wrap">
     <a class="gpromo" href="#gacha"><span>New</span> Create an account and get 1 free Seeds Gacha pull →</a>
@@ -1247,8 +1294,14 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
   const route=()=>{let h=location.hash;if(h==='#admin'&&ACC.adminResolved&&!ACC.admin){h='';location.hash=''}
     const g=h==='#gacha',l=h==='#masuk',a=h==='#akun',ad=h==='#admin';
     home.hidden=g||l||a||ad;gacha.hidden=!g;loginView.hidden=!l;akunView.hidden=!a;adminView.hidden=!ad;
-    if(g||l||a||ad)scrollTo(0,0);document.getElementById('udrop').hidden=true;document.getElementById('ubtn').setAttribute('aria-expanded','false');};
+    // every nav item is its own page
+    const pg=['#tentang','#layanan','#karya','#tim','#pesan'].includes(h)?h.slice(1):'home';
+    home.querySelectorAll('[data-pg]').forEach(el=>{el.hidden=el.dataset.pg!==pg});
+    document.querySelectorAll('#tbMenu a').forEach(x=>x.toggleAttribute('aria-current',x.getAttribute('href')===h));
+    document.body.classList.toggle('menu-open',false);document.getElementById('tbBurger').setAttribute('aria-expanded','false');
+    requestAnimationFrame(()=>scrollTo(0,0));document.getElementById('udrop').hidden=true;document.getElementById('ubtn').setAttribute('aria-expanded','false');};
   addEventListener('hashchange',route);route();
+  document.getElementById('tbBurger').addEventListener('click',e=>{const o=!document.body.classList.contains('menu-open');document.body.classList.toggle('menu-open',o);e.currentTarget.setAttribute('aria-expanded',String(o))});
 
   /* ---------- gacha ---------- */
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
