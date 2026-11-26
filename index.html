@@ -914,6 +914,23 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
   .topbar #navlogin{padding:8px 14px;font-size:12px}
   .hero{height:calc(100svh - 58px)}
 }
+/* ---------- home banner slider ---------- */
+.promo{padding:clamp(28px,4vw,56px) 0 0}
+.promo .wrap{max-width:1240px}
+.promo-track{position:relative;aspect-ratio:16/9;border:1px solid var(--ink-3);border-radius:clamp(10px,1.2vw,16px);overflow:hidden;background:#141414;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+.promo-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .8s var(--ease),visibility 0s .8s}
+.promo-slide.is-on{opacity:1;visibility:visible;transition:opacity .8s var(--ease)}
+.promo-slide img{display:block;width:100%;height:100%;object-fit:contain;transition:transform 1.2s var(--ease)}
+.promo-slide:hover img{transform:scale(1.015)}
+.promo-slide:focus-visible{outline:3px solid var(--red);outline-offset:-3px}
+.promo-arr{position:absolute;top:50%;translate:0 -50%;width:42px;height:42px;border-radius:50%;border:0;background:rgba(0,0,0,.45);color:#fff;font:400 26px/1 var(--display);cursor:pointer;opacity:0;transition:opacity .25s,background .25s;z-index:2}
+.promo-arr.prev{left:14px}.promo-arr.next{right:14px}
+.promo-track:hover .promo-arr,.promo-arr:focus-visible{opacity:1}
+.promo-arr:hover{background:var(--red)}
+.promo-track.single .promo-arr{display:none}
+.promo-dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
+.promo-dots button{width:8px;height:8px;padding:0;border:0;border-radius:99px;background:#3a3a3a;cursor:pointer;transition:width .3s,background .3s}
+.promo-dots button[aria-selected="true"]{width:26px;background:var(--red)}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -964,6 +981,19 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
   </div>
   <a class="scrollcue" href="#tentang" aria-label="Scroll down"></a>
 </header>
+
+<section class="promo" data-pg="home" aria-label="Highlights" aria-roledescription="carousel">
+  <div class="wrap">
+    <div class="promo-track" id="promo">
+      <!-- add more banners: copy one <a class="promo-slide">, change href/src/alt -->
+      <a class="promo-slide" href="#masuk"><img src="banner-gacha.jpg" alt="Gacha your card. Make an account and get 1 free gacha, then start your commission. Register account." width="1920" height="1080"></a>
+      <button type="button" class="promo-arr prev" aria-label="Previous banner">‹</button>
+      <button type="button" class="promo-arr next" aria-label="Next banner">›</button>
+    </div>
+    <div class="promo-dots" id="promoDots" role="tablist" aria-label="Choose banner"></div>
+  </div>
+</section>
+
 
 <section class="intro" id="tentang" data-pg="tentang">
   <i class="batik l" aria-hidden="true"></i><i class="batik r" aria-hidden="true"></i>
@@ -1261,6 +1291,20 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
 <script src="js/sb.js"></script>
 <script>
 (()=>{
+  /* ---------- home banner slider (auto-rotates like an ad) ---------- */
+  (()=>{const tr=document.getElementById('promo');if(!tr)return;
+    const sl=[...tr.querySelectorAll('.promo-slide')],dots=document.getElementById('promoDots');let i=0,t=null;
+    const show=n=>{i=(n+sl.length)%sl.length;sl.forEach((x,k)=>{x.classList.toggle('is-on',k===i);x.tabIndex=k===i?0:-1;x.setAttribute('aria-hidden',String(k!==i))});
+      [...dots.children].forEach((d,k)=>d.setAttribute('aria-selected',String(k===i)))};
+    sl.forEach((_,k)=>{const d=document.createElement('button');d.type='button';d.setAttribute('role','tab');d.setAttribute('aria-label','Banner '+(k+1));d.onclick=()=>{show(k);play()};dots.appendChild(d)});
+    const multi=sl.length>1;tr.classList.toggle('single',!multi);dots.hidden=!multi;
+    const play=()=>{clearInterval(t);if(multi&&!matchMedia('(prefers-reduced-motion: reduce)').matches)t=setInterval(()=>show(i+1),6000)};
+    tr.querySelector('.prev').onclick=()=>{show(i-1);play()};tr.querySelector('.next').onclick=()=>{show(i+1);play()};
+    tr.addEventListener('mouseenter',()=>clearInterval(t));tr.addEventListener('mouseleave',play);
+    let x0=null;tr.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});
+    tr.addEventListener('touchend',e=>{if(x0==null||!multi)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40){show(i+(dx<0?1:-1));play()}x0=null});
+    show(0);play();
+  })();
   /* ---------- portofolio ---------- */
   (()=>{const g=document.getElementById('pf-grid'),lb=document.getElementById('pf-lb');
     document.querySelectorAll('.pf-filter button').forEach(b=>b.onclick=()=>{const f=b.dataset.f;
