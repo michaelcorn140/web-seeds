@@ -947,7 +947,7 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
 <nav class="topbar">
   <div class="tb">
     <a class="navlogo" href="#top" aria-label="Seeds Studio home"><i class="frog" aria-hidden="true"></i><span>Seeds<br>Studio.</span></a>
-    <div class="navlinks" id="tbMenu"><a href="#tentang">About</a><a href="#layanan">Services</a><a href="#karya">Portfolio</a><a href="#tim">Team</a><a href="#pesan">How to order</a><a href="#gacha" class="gl">Gacha ✦</a></div>
+    <div class="navlinks" id="tbMenu"><a href="#layanan">Services</a><a href="#karya">Portfolio</a><a href="#tim">Team</a><a href="#pesan">How to order</a><a href="#gacha" class="gl">Gacha ✦</a></div>
     <div class="navr">
       <a class="ico" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
       <a class="ico" href="https://x.com" target="_blank" rel="noopener" aria-label="X"><svg><use href="#i-x"/></svg></a>
@@ -977,7 +977,7 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
   <div class="wrap">
     <div class="promo-track" id="promo">
       <!-- add more banners: copy one <a class="promo-slide">, change href/src/alt -->
-      <a class="promo-slide" href="#masuk"><img src="banner-gacha.jpg" alt="Gacha your card. Make an account and get 1 free gacha, then start your commission. Register account." width="1920" height="1080"></a>
+      <a class="promo-slide" href="#masuk"><img src="banner-gacha.jpg" alt="Gacha your card. Make an account and get 1 free gacha, then start your commission. Register account." width="3120" height="1755"></a>
       <button type="button" class="promo-arr prev" aria-label="Previous banner">‹</button>
       <button type="button" class="promo-arr next" aria-label="Next banner">›</button>
     </div>
@@ -986,7 +986,7 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
 </section>
 
 
-<section class="intro" id="tentang" data-pg="tentang">
+<section class="intro" id="tentang" data-pg="home">
   <i class="batik l" aria-hidden="true"></i><i class="batik r" aria-hidden="true"></i>
   <div class="wrap">
     <span class="salam"><b lang="jv">ꦱꦸꦒꦼꦁꦫꦮꦸꦃ</b>Sugeng rawuh · Welcome</span>
@@ -995,7 +995,7 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
   </div>
 </section>
 
-<div class="band" data-pg="tentang"><img class="par" src="samurai.jpg" alt="Anime illustration of a white-haired swordswoman drawing a katana against a red background" style="object-position:50% 35%"><span class="cap">Seeds Studio · Jogja</span></div>
+<div class="band" data-pg="home"><img class="par" src="samurai.jpg" alt="Anime illustration of a white-haired swordswoman drawing a katana against a red background" style="object-position:50% 35%"><span class="cap">Seeds Studio · Jogja</span></div>
 
 <section class="svc3" id="layanan" data-pg="layanan">
   <div class="wrap">
@@ -1270,7 +1270,7 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
   <div class="wrap">
     <div class="fgrid">
       <a class="navlogo" href="#top"><i class="frog" aria-hidden="true"></i><span>Seeds<br>Studio.</span></a>
-      <ul><li><a href="#tentang">About</a></li><li><a href="#layanan">Services</a></li><li><a href="#karya">Portfolio</a></li></ul>
+      <ul><li><a href="#top">Home</a></li><li><a href="#layanan">Services</a></li><li><a href="#karya">Portfolio</a></li></ul>
       <ul><li><a href="https://vgen.co" target="_blank" rel="noopener">VGen</a></li><li><a href="https://x.com" target="_blank" rel="noopener">X</a></li><li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li></ul>
       <div class="fcta"><small>Ready to commission?</small><a class="btn red" href="#pesan" style="justify-self:start">Start an order</a><small>Social links are placeholders.</small></div>
     </div>
@@ -1330,7 +1330,7 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
     const g=h==='#gacha',l=h==='#masuk',a=h==='#akun',ad=h==='#admin';
     home.hidden=g||l||a||ad;gacha.hidden=!g;loginView.hidden=!l;akunView.hidden=!a;adminView.hidden=!ad;
     // every nav item is its own page
-    const pg=['#tentang','#layanan','#karya','#tim','#pesan'].includes(h)?h.slice(1):'home';
+    const pg=['#layanan','#karya','#tim','#pesan'].includes(h)?h.slice(1):'home';
     home.querySelectorAll('[data-pg]').forEach(el=>{el.hidden=el.dataset.pg!==pg});
     document.querySelectorAll('#tbMenu a').forEach(x=>x.toggleAttribute('aria-current',x.getAttribute('href')===h));
     document.body.classList.toggle('menu-open',false);document.getElementById('tbBurger').setAttribute('aria-expanded','false');
