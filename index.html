@@ -897,7 +897,7 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
 .hero{height:calc(100vh - 64px);height:calc(100svh - 64px)}
 .gacha{padding-top:24px}
 .akun,.login,.adminpage{padding-top:40px}
-[data-pg]:not(.hero){min-height:calc(100svh - 64px - 160px)}
+[data-pg]:not([data-pg="home"]){min-height:calc(100svh - 64px - 160px)}
 @media (max-width:1100px){
   .tb-burger{display:flex}
   .tb{grid-template-columns:1fr auto}
@@ -931,6 +931,11 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
 .promo-dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
 .promo-dots button{width:8px;height:8px;padding:0;border:0;border-radius:99px;background:#3a3a3a;cursor:pointer;transition:width .3s,background .3s}
 .promo-dots button[aria-selected="true"]{width:26px;background:var(--red)}
+/* home: the banner slider is the hero (full width, never cropped) */
+.promo{padding:0}
+.promo .wrap{max-width:none;padding:0;position:relative}
+.promo-track{border:0;border-radius:0;box-shadow:none}
+.promo-dots{position:absolute;left:0;right:0;bottom:clamp(10px,2vw,22px);margin:0;z-index:3}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -966,23 +971,9 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
 
 <div id="home">
 
-<header class="hero" id="top" data-pg="home">
-  <img src="featured.jpg" alt="Seeds Studio illustration: an anime girl eating ramen at a night stall with a white cat and a frog">
-  <div class="wrap hero-cap">
-    <div>
-      <h1>Seeds Studio<span class="dot">.</span></h1>
-      <p>Live2D · Illustration · Background · Stinger</p>
-      <span class="loc">Yogyakarta, Indonesia · 7.80°S 110.36°E</span>
-    </div>
-    <div class="hero-r">
-      <div class="open"><b></b>Comms open · 3 slots <span class="tag">sample</span></div>
-      <span class="credit">Midnight Ramen</span>
-    </div>
-  </div>
-  <a class="scrollcue" href="#tentang" aria-label="Scroll down"></a>
-</header>
 
-<section class="promo" data-pg="home" aria-label="Highlights" aria-roledescription="carousel">
+
+<section class="promo" id="top" data-pg="home" aria-label="Highlights" aria-roledescription="carousel">
   <div class="wrap">
     <div class="promo-track" id="promo">
       <!-- add more banners: copy one <a class="promo-slide">, change href/src/alt -->
