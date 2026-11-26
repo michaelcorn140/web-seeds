@@ -936,50 +936,6 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
 .promo .wrap{max-width:none;padding:0;position:relative}
 .promo-track{border:0;border-radius:0;box-shadow:none}
 .promo-dots{position:absolute;left:0;right:0;bottom:clamp(10px,2vw,22px);margin:0;z-index:3}
-/* ---------- banner 1 rebuilt in code (always sharp) ---------- */
-.promo-track{container-type:inline-size}
-.pb{cursor:pointer;background:radial-gradient(70% 90% at 72% 52%,#2a1616 0%,#171717 55%,#111 100%)}
-.pb::before{content:"";position:absolute;inset:0;background:var(--kawung2) center/90px 90px;opacity:.06;pointer-events:none}
-.pb-stage{position:absolute;left:0;top:0;width:1600px;height:900px;transform-origin:0 0;transform:scale(var(--pbs,1))}
-.pb-ring{position:absolute;left:1200px;top:470px;border-radius:50%;border:2px solid rgba(255,255,255,.07);translate:-50% -50%}
-.pb-ring.r1{width:820px;height:820px;border-width:26px;border-color:rgba(255,255,255,.035)}
-.pb-ring.r2{width:640px;height:640px;border-style:dashed;border-color:rgba(255,59,60,.22);animation:pbspin 60s linear infinite}
-.pb-ring.r3{width:980px;height:980px;border-color:rgba(255,255,255,.05)}
-.pb-ripple{position:absolute;left:1200px;top:760px;width:560px;height:120px;border-radius:50%;border:2px solid rgba(255,255,255,.12);translate:-50% -50%}
-.pb-ripple.p2{width:380px;height:76px;border-color:rgba(255,255,255,.18)}
-.pb-wm{position:absolute;left:1200px;top:460px;translate:-50% -50%;font:700 260px/1 var(--jv);color:rgba(255,59,60,.06);white-space:nowrap}
-@keyframes pbspin{to{rotate:360deg}}
-.pb-copy{position:absolute;left:70px;top:50%;translate:0 -50%;width:780px;text-align:center}
-.pb-copy h2{margin:0;white-space:nowrap;font:900 128px/.9 var(--display);letter-spacing:-.045em;text-transform:uppercase;color:var(--red);text-shadow:0 8px 0 rgba(0,0,0,.35)}
-.pb-copy p{margin:34px auto 0;max-width:520px;font:800 30px/1.35 var(--display);letter-spacing:-.01em;text-transform:uppercase;color:#f2f2f2}
-.pb-copy p b{color:#fff}.pb-copy p em{font-style:normal;color:var(--red)}
-.pb-btn{display:inline-block;margin-top:46px;padding:24px 64px;border-radius:999px;background:var(--red);color:#fff;text-decoration:none;font:900 32px/1 var(--display);letter-spacing:-.01em;text-transform:uppercase;box-shadow:0 14px 0 -4px #7d1718,0 24px 40px -12px rgba(255,59,60,.6);transition:transform .25s var(--ease),background .25s}
-.pb-btn:hover{transform:translateY(-4px);background:#ff5253}
-.pb-packs{position:absolute;left:1200px;top:455px;width:0;height:0}
-.pb-pack{position:absolute;width:310px;height:460px;left:-155px;top:-230px;filter:drop-shadow(0 40px 50px rgba(0,0,0,.6));color:#fff}
-.pb-pack .pk-brand{font-size:25px}.pb-pack .pk-body .frog{height:186px}.pb-pack .pk-name{font-size:32px}.pb-pack .pk-name small{font-size:12px}
-.pb-pack.l{transform:translate(-150px,30px) rotate(-14deg);filter:brightness(.82) drop-shadow(0 30px 40px rgba(0,0,0,.6))}
-.pb-pack.r{transform:translate(150px,30px) rotate(10deg);filter:brightness(.82) drop-shadow(0 30px 40px rgba(0,0,0,.6))}
-.pb-pack.f{animation:pbfloat 4s ease-in-out infinite}
-@keyframes pbfloat{50%{transform:translateY(-14px)}}
-.pb:hover .pb-pack.l{transform:translate(-175px,24px) rotate(-17deg)}
-.pb:hover .pb-pack.r{transform:translate(175px,24px) rotate(13deg)}
-.pb-pack.l,.pb-pack.r{transition:transform .6s var(--ease)}
-@media (prefers-reduced-motion:reduce){.pb-ring.r2,.pb-pack.f{animation:none}}
-/* phone: stacked layout */
-@media (max-width:600px){
-  .promo-track:has(.pb){aspect-ratio:4/5}
-  .pb-stage{width:800px;height:1000px}
-  .pb-ring,.pb-wm{left:400px;top:250px}
-  .pb-ring.r1{width:600px;height:600px}.pb-ring.r3{width:740px;height:740px}.pb-ring.r2{width:470px;height:470px}
-  .pb-ripple{left:400px;top:440px}
-  .pb-packs{left:400px;top:235px;scale:.74}
-  .pb-pack{transform-origin:50% 50%}
-  .pb-copy{left:50%;top:auto;bottom:70px;translate:-50% 0;width:720px}
-  .pb-copy h2{font-size:116px}
-  .pb-copy p{font-size:32px;margin-top:24px}
-  .pb-btn{margin-top:32px;font-size:34px}
-}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1021,18 +977,7 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
   <div class="wrap">
     <div class="promo-track" id="promo">
       <!-- add more banners: copy one <a class="promo-slide">, change href/src/alt -->
-      <div class="promo-slide pb" role="group" aria-label="Gacha your card" data-href="#masuk">
-        <div class="pb-stage">
-          <i class="pb-ring r1"></i><i class="pb-ring r2"></i><i class="pb-ring r3"></i><i class="pb-ripple"></i><i class="pb-ripple p2"></i>
-          <span class="pb-wm" aria-hidden="true">ꦮꦶꦗꦶ</span>
-          <div class="pb-copy">
-            <h2>Gacha<br>your card</h2>
-            <p>Make an account and get <b>1 free gacha</b>, then <em>start your commission</em>.</p>
-            <a class="pb-btn" href="#masuk">Register account</a>
-          </div>
-          <div class="pb-packs" aria-hidden="true"><div class="pb-pack l"><span class="pk-top"><span class="pk-tear"></span></span><span class="pk-body"><span class="pk-brand">Seeds<br>Studio.</span><i class="frog"></i><span class="pk-name">Booster Pack<br><small>Seeds Studio · Vol.01</small></span></span><span class="pk-shine"></span></div><div class="pb-pack r"><span class="pk-top"><span class="pk-tear"></span></span><span class="pk-body"><span class="pk-brand">Seeds<br>Studio.</span><i class="frog"></i><span class="pk-name">Booster Pack<br><small>Seeds Studio · Vol.01</small></span></span><span class="pk-shine"></span></div><div class="pb-pack f"><span class="pk-top"><span class="pk-tear"></span></span><span class="pk-body"><span class="pk-brand">Seeds<br>Studio.</span><i class="frog"></i><span class="pk-name">Booster Pack<br><small>Seeds Studio · Vol.01</small></span></span><span class="pk-shine"></span></div></div>
-        </div>
-      </div>
+      <a class="promo-slide" href="#masuk"><img src="banner-gacha.jpg" alt="Gacha your card. Make an account and get 1 free gacha, then start your commission. Register account." width="3120" height="1755"></a>
       <button type="button" class="promo-arr prev" aria-label="Previous banner">‹</button>
       <button type="button" class="promo-arr next" aria-label="Next banner">›</button>
     </div>
@@ -1349,10 +1294,6 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
     tr.addEventListener('mouseenter',()=>clearInterval(t));tr.addEventListener('mouseleave',play);
     let x0=null;tr.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});
     tr.addEventListener('touchend',e=>{if(x0==null||!multi)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40){show(i+(dx<0?1:-1));play()}x0=null});
-    // scale code-built banners to the track size
-    const fit=()=>tr.querySelectorAll('.pb-stage').forEach(st=>{st.style.setProperty('--pbs',tr.clientWidth/st.offsetWidth)});
-    fit();addEventListener('resize',fit);if('ResizeObserver' in window)new ResizeObserver(fit).observe(tr);
-    tr.addEventListener('click',e=>{const sl=e.target.closest('.promo-slide[data-href]');if(sl&&!e.target.closest('a,button'))location.hash=sl.dataset.href});
     show(0);play();
   })();
   /* ---------- portofolio ---------- */
