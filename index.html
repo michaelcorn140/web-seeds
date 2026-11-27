@@ -875,6 +875,27 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
  .sz-img img{inset:10px;width:calc(100% - 20px);height:calc(100% - 20px)}
  .sz-badge{left:10px;font-size:9px;padding:5px 8px}
  .svc3{padding-top:24px}.sz-meta{padding:12px 12px 14px}.sz-meta strong{font-size:13px}.sz-meta span{font-size:12px}.sz-wm{display:none}}
+/* services: horizontal cards (image left, details right) */
+.sz-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.sz-card.sz-h{flex-direction:row;cursor:default}
+.sz-card.sz-h:hover{transform:none}
+.sz-h .sz-img{flex:0 0 42%;aspect-ratio:auto;min-height:280px;border:0;margin:0;padding:0;cursor:zoom-in;color:inherit}
+.sz-h .sz-img:disabled{cursor:default}
+.sz-h .sz-img:focus-visible{outline:2px solid var(--red);outline-offset:-2px}
+.sz-det{flex:1;min-width:0;display:flex;flex-direction:column;gap:10px;padding:clamp(18px,2vw,26px);border-left:1px solid var(--ink-3)}
+.sz-det small{font:600 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--red)}
+.sz-det h3{font:900 clamp(18px,1.6vw,22px)/1.1 var(--display);text-transform:uppercase;letter-spacing:-.01em}
+.sz-det p{margin:0;color:var(--gray);font-size:14px;line-height:1.5}
+.sz-inc{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.sz-inc li{font:600 11px var(--mono);padding:4px 9px;border:1px solid var(--ink-3);border-radius:999px;color:var(--gray)}
+.sz-ft{margin-top:auto;padding-top:8px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.sz-pr{display:grid;line-height:1.1}
+.sz-pr small{color:var(--muted);letter-spacing:.1em}
+.sz-pr b{font:900 20px var(--display)}
+.sz-ft .btn{padding:9px 18px;font-size:13px}
+@media (max-width:1100px){.sz-grid{grid-template-columns:1fr}}
+@media (max-width:760px){.sz-grid{grid-template-columns:1fr}.sz-h .sz-img{flex-basis:38%;min-height:0}.sz-det{padding:14px;gap:7px}.sz-det h3{font-size:15px}.sz-det p{font-size:13px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.sz-inc li{font-size:10px;padding:3px 7px}.sz-pr b{font-size:16px}.sz-ft .btn{padding:8px 14px;font-size:12px}}
+@media (max-width:420px){.sz-inc li:nth-child(n+3){display:none}}
 /* simple shop (sidebar filter + grid), used by Portfolio */
 .shop{max-width:1320px}
 .sh-top{display:flex;align-items:center;gap:12px;margin-bottom:22px}
@@ -1361,24 +1382,23 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
     /* one card per package or sample; img can be any size (it is never cropped). no img = frog placeholder */
     const CATS=[['all','All'],['l2d','Live2D'],['il','Illustration'],['bg','Background'],['stg','Stinger']];
     const PK=[
-      {c:'l2d',t:'Full Body Live2D Model',img:'girl.jpg',p:'Rp 7,500,000'},
-      {c:'l2d',t:'Half Body Live2D Model',img:'nel.jpg',p:'Rp 4,500,000'},
-      {c:'il',t:'Illustration + Background',img:'featured.jpg',p:'Rp 1,500,000'},
-      {c:'il',t:'Character Illustration',img:'hand.jpg',p:'Rp 650,000'},
-      {c:'bg',t:'Stream Background',img:'street.jpg',p:'Rp 900,000'},
-      {c:'bg',t:'Scene Background',img:'samurai.jpg',p:'Rp 1,200,000'},
-      {c:'stg',t:'Logo Stinger',p:'Rp 500,000',soon:1},
-      {c:'stg',t:'Mascot Stinger',p:'Rp 750,000',soon:1}];
+      {c:'l2d',t:'Full Body Live2D Model',img:'girl.jpg',p:'Rp 7,500,000',d:'Full VTuber model from art to rigging, tracking-ready for VTube Studio.',inc:['Art + rigging','Toggle expressions','.moc3 + PSD','4–8 weeks']},
+      {c:'l2d',t:'Half Body Live2D Model',img:'nel.jpg',p:'Rp 4,500,000',d:'Waist-up model for streaming and chatting, with smooth head and body movement.',inc:['Art + rigging','4 expressions','.moc3 + PSD','3–6 weeks']},
+      {c:'il',t:'Illustration + Background',img:'featured.jpg',p:'Rp 1,500,000',d:'Your character in a fully painted scene, great for key visuals and banners.',inc:['Character + scene','Full render','Hi-res PNG','2–3 weeks']},
+      {c:'il',t:'Character Illustration',img:'hand.jpg',p:'Rp 650,000',d:'Anime-style character art, from bust to full body, with simple background.',inc:['Bust to full body','Full render','Hi-res PNG','1–2 weeks']},
+      {c:'bg',t:'Stream Background',img:'street.jpg',p:'Rp 900,000',d:'A 16:9 room or scene for your stream, layered so it can move with parallax.',inc:['16:9 scene','Layered PSD','Day / night','2–3 weeks']},
+      {c:'bg',t:'Scene Background',img:'samurai.jpg',p:'Rp 1,200,000',d:'Detailed story or fantasy scenes for illustrations, MVs and covers.',inc:['Any ratio','Layered PSD','Hi-res PNG','2–4 weeks']},
+      {c:'stg',t:'Logo Stinger',p:'Rp 500,000',soon:1,d:'A 1–2 second transition built around your logo, ready for OBS.',inc:['1–2 seconds','Transparent WebM','OBS ready','1–2 weeks']},
+      {c:'stg',t:'Mascot Stinger',p:'Rp 750,000',soon:1,d:'Your mascot or chibi animated into a short stream transition.',inc:['1–2 seconds','Transparent WebM','Sound optional','2–3 weeks']}];
     const name=Object.fromEntries(CATS),tabs=document.getElementById('sz-tabs'),grid=document.getElementById('sz-grid');
     tabs.innerHTML=CATS.map(([k,v])=>`<button type="button" role="tab" data-f="${k}">${v}</button>`).join('');
     function show(f){
       [...tabs.children].forEach(b=>b.setAttribute('aria-selected',b.dataset.f===f));
       const L=PK.map((v,i)=>[v,i]).filter(([v])=>f==='all'||v.c===f);
-      grid.innerHTML=L.map(([v,i],n)=>`<button type="button" class="sz-card" data-i="${i}" style="animation-delay:${n*45}ms"><span class="sz-badge${v.soon?' soon':''}">${v.soon?'Samples soon':'Open'}</span><span class="sz-img">${v.img?`<img src="${v.img}" alt="${v.t} sample" loading="lazy">`:'<i class="frog"></i>'}</span><span class="sz-meta"><small>${name[v.c]}</small><strong>${v.t}</strong><span>from ${v.p}</span></span></button>`).join('')||'<p class="sz-empty">Nothing here yet.</p>';
+      grid.innerHTML=L.map(([v,i],n)=>`<article class="sz-card sz-h" data-i="${i}" style="animation-delay:${n*45}ms"><span class="sz-badge${v.soon?' soon':''}">${v.soon?'Samples soon':'Open'}</span><button type="button" class="sz-img" aria-label="${v.img?'View '+v.t+' sample':v.t+': samples soon'}"${v.img?'':' disabled'}>${v.img?`<img src="${v.img}" alt="${v.t} sample" loading="lazy">`:'<i class="frog"></i>'}</button><div class="sz-det"><small>${name[v.c]}</small><h3>${v.t}</h3><p>${v.d}</p><ul class="sz-inc">${v.inc.map(x=>`<li>${x}</li>`).join('')}</ul><div class="sz-ft"><span class="sz-pr"><small>from</small><b>${v.p}</b></span><a class="btn red" href="#pesan">Order <span aria-hidden="true">→</span></a></div></div></article>`).join('')||'<p class="sz-empty">Nothing here yet.</p>';
     }
     tabs.addEventListener('click',e=>{const b=e.target.closest('button');if(b)show(b.dataset.f)});
-    grid.addEventListener('click',e=>{const b=e.target.closest('.sz-card');if(!b)return;const v=PK[+b.dataset.i];
-      if(!v.img){location.hash='#pesan';return}
+    grid.addEventListener('click',e=>{const im=e.target.closest('.sz-img');if(!im||im.disabled)return;const v=PK[+im.closest('.sz-card').dataset.i];
       const lb=document.getElementById('pf-lb');document.getElementById('pf-lb-img').src=v.img;document.getElementById('pf-lb-img').alt=v.t+' sample';
       document.getElementById('pf-lb-t').textContent=v.t;document.getElementById('pf-lb-m').textContent=name[v.c]+' · from '+v.p;lb.showModal()});
     show('all');
