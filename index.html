@@ -835,44 +835,33 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
 .sec-head > .btn,.sec-head .pf-filter{flex:none}
 .sv-cta{flex:none}
 @media (max-width:480px){.sv-head{flex-direction:column;align-items:flex-start}}
-/* services: expanding card panels */
-.sx{display:flex;gap:12px;height:clamp(460px,62vh,600px)}
-.sx-c{position:relative;flex:1 1 0;min-width:0;border-radius:14px;overflow:hidden;background:var(--ink-2);cursor:pointer;transition:flex-grow .7s var(--ease);isolation:isolate;outline:none}
-.sx-c.on{flex-grow:4.2;cursor:default}
-.sx-c>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.55) brightness(.6);transform:scale(1.06);transition:filter .7s,transform 1.2s var(--ease)}
-.sx-c.on>img{filter:none;transform:scale(1)}
-.sx-c:not(.on):hover>img{filter:saturate(.9) brightness(.8)}
-.sx-c::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,21,20,.15) 30%,rgba(20,21,20,.92) 88%)}
-.sx-c::after{content:"";position:absolute;inset:10px;border:1px solid rgba(236,236,236,.22);border-radius:8px;pointer-events:none;transition:border-color .4s}
-.sx-c.on::after,.sx-c:focus-visible::after{border-color:var(--red)}
-.sx-no{position:absolute;top:22px;left:22px;font:700 11px var(--mono);letter-spacing:.14em;color:var(--paper);display:flex;gap:8px;align-items:center}
-.sx-no i{width:16px;height:16px;border-radius:50%;background:var(--kawung) center/30px 30px,#1b0f10;border:1px solid rgba(255,59,60,.5)}
-.sx-v{position:absolute;left:50%;bottom:30px;transform:translateX(-50%) rotate(180deg);writing-mode:vertical-rl;font:900 20px/1 var(--display);letter-spacing:.02em;text-transform:uppercase;white-space:nowrap;transition:opacity .3s}
-.sx-c.on .sx-v{opacity:0;pointer-events:none}
-.sx-b{position:absolute;left:clamp(22px,3vw,40px);right:clamp(22px,3vw,40px);bottom:clamp(22px,3vw,36px);display:grid;gap:12px;max-width:560px;opacity:0;transform:translateY(14px);transition:opacity .25s,transform .25s;pointer-events:none}
-.sx-c.on .sx-b{opacity:1;transform:none;transition:opacity .5s .3s,transform .6s .3s var(--ease);pointer-events:auto}
-.sx-cat{font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
-.sx-b h3{font:900 clamp(30px,3.6vw,52px)/.95 var(--display);text-transform:uppercase;letter-spacing:-.03em}
-.sx-b p{margin:0;color:var(--gray);max-width:52ch}
-.sx-inc{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
-.sx-inc li{font:600 12px var(--mono);padding:5px 10px;border:1px solid rgba(236,236,236,.25);border-radius:999px;background:rgba(20,21,20,.5);backdrop-filter:blur(4px)}
-.sx-foot{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-top:6px}
-.sx-pr{display:grid;line-height:1.1;margin-right:6px}
-.sx-pr small{font:600 11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
-.sx-pr b{font:900 22px var(--display)}
-.sx-foot .btn{padding:9px 18px;font-size:13px}
-.sx-hint{display:none}
-@media (max-width:900px){
- .sx{flex-direction:column;height:auto;gap:10px}
- .sx-c{flex:none;height:92px;transition:height .6s var(--ease)}
- .sx-c.on{height:540px}
- .sx-v{writing-mode:horizontal-tb;transform:translateY(-50%);left:84px;top:50%;bottom:auto;font-size:18px}
- .sx-no{top:50%;transform:translateY(-50%);left:20px}.sx-no span{display:none}
- .sx-c.on .sx-no{top:22px;transform:none}.sx-c.on .sx-no span{display:inline}
- .sx-hint{display:block;margin:14px 0 0;text-align:center;font:600 11px var(--mono);color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
-}
-@media (max-width:480px){.sx-c.on{height:600px}.sx-b h3{font-size:32px}}
-@media (prefers-reduced-motion:reduce){.sx-c,.sx-c>img,.sx-b{transition:none!important}}
+/* services: tabs + info + portfolio previews (masonry, any image size) */
+.sy-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:clamp(24px,3vw,36px)}
+.sy-tabs button{display:flex;align-items:center;gap:8px;font:800 13px var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--gray);background:none;border:1px solid var(--ink-3);border-radius:999px;padding:10px 18px;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
+.sy-tabs button em{font:600 11px var(--mono);font-style:normal;color:var(--muted)}
+.sy-tabs button:hover{border-color:var(--gray);color:var(--paper)}
+.sy-tabs button[aria-selected="true"]{background:var(--red);border-color:var(--red);color:#fff}
+.sy-tabs button[aria-selected="true"] em{color:rgba(255,255,255,.75)}
+.sy{display:grid;grid-template-columns:minmax(260px,1fr) minmax(0,2.1fr);gap:clamp(28px,4vw,64px);align-items:start}
+.sy.in{animation:fadeup .4s var(--ease) both}
+.sy-info{position:sticky;top:96px;display:grid;gap:14px}
+.sy-info h3{font:900 clamp(30px,3.2vw,46px)/.95 var(--display);text-transform:uppercase;letter-spacing:-.03em}
+.sy-info p{margin:0;color:var(--gray)}
+.sy-inc{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink-3)}
+.sy-inc li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--ink-3);font-size:14px;color:var(--gray)}
+.sy-inc li span{color:var(--muted);font:600 12px var(--mono)}
+.sy-pr small{display:block;font:600 11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.sy-pr b{font:900 26px var(--display)}
+.sy-info .btn{justify-self:start}
+.sy-gal{columns:2;column-gap:12px}
+.sy-gal button{display:block;width:100%;margin:0 0 12px;padding:0;border:0;background:var(--ink-2);border-radius:8px;overflow:hidden;cursor:zoom-in;break-inside:avoid;position:relative}
+.sy-gal img{display:block;width:100%;height:auto;transition:transform .6s var(--ease)}
+.sy-gal button:hover img{transform:scale(1.03)}
+.sy-gal button:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.sy-gal .soon{aspect-ratio:4/3;display:grid;place-items:center;border:1px dashed var(--ink-3);background:none;cursor:default;font:600 11px var(--mono);color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+@media (min-width:1400px){.sy-gal{columns:3}}
+@media (max-width:900px){.sy{grid-template-columns:1fr}.sy-info{position:static}}
+@media (max-width:480px){.sy-tabs{flex-wrap:nowrap;overflow-x:auto;margin-inline:-16px;padding-inline:16px;scrollbar-width:none}.sy-tabs button{flex:none}.sy-gal{column-gap:8px}.sy-gal button{margin-bottom:8px}}
 
 /* unified simple section heads + steps grid */
 .order .sec-head h2::before{display:none}
@@ -1020,8 +1009,8 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
       <div><h2>Services</h2><p>Four core commissions for creators and VTubers. <span class="tag">sample prices</span></p></div>
       <a class="btn red sv-cta" href="#pesan">Order <span aria-hidden="true">→</span></a>
     </div>
-    <div class="sx" id="sx" role="tablist" aria-label="Services"></div>
-    <p class="sx-hint" aria-hidden="true">Tap a card to open it</p>
+    <div class="sy-tabs" id="sy-tabs" role="tablist" aria-label="Services"></div>
+    <div class="sy" id="sy" role="tabpanel"></div>
   </div>
 </section>
 
@@ -1055,7 +1044,6 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
     </div>
 
   </div>
-  <dialog class="pf-lb" id="pf-lb" aria-labelledby="pf-lb-t"><button type="button" class="pf-lb-x" id="pf-lb-x" aria-label="Close">×</button><img id="pf-lb-img" alt=""><div class="pf-lb-cap"><strong id="pf-lb-t"></strong><small id="pf-lb-m"></small></div></dialog>
 </section>
 
 
@@ -1287,6 +1275,7 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
     <div class="legal"><span>© 2026 Seeds Studio · <span class="jogja">Made in <b>Yogyakarta</b>, Indonesia. Matur nuwun!</span></span><span>www.seedstudio.com</span></div>
   </div>
 </footer>
+  <dialog class="pf-lb" id="pf-lb" aria-labelledby="pf-lb-t"><button type="button" class="pf-lb-x" id="pf-lb-x" aria-label="Close">×</button><img id="pf-lb-img" alt=""><div class="pf-lb-cap"><strong id="pf-lb-t"></strong><small id="pf-lb-m"></small></div></dialog>
 
 <script src="js/supabase-config.js"></script>
 <script src="js/sb.js"></script>
@@ -1315,22 +1304,26 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
       document.getElementById('pf-lb-t').textContent=it.dataset.title;document.getElementById('pf-lb-m').textContent=it.dataset.meta;lb.showModal()});
     document.getElementById('pf-lb-x').onclick=()=>lb.close();lb.addEventListener('click',e=>{if(e.target===lb)lb.close()});
   })();
-  /* ---------- services: expanding cards ---------- */
+  /* ---------- services: tabs + portfolio previews ---------- */
   (()=>{
+    /* add previews per service in "w": any size works, images keep their own shape */
     const SV=[
-      {t:'Live2D Model',cat:'Live2D',img:'girl.jpg',pos:'50% 30%',p:'Rp 7,500,000',d:'VTuber model from art to rigging. Tracking-ready with toggle expressions, .moc3 files and a layered PSD.',inc:['Art + rigging','Toggle expressions','.moc3 + PSD','4–8 weeks']},
-      {t:'Anime Illustration',cat:'Illustration',img:'featured.jpg',pos:'62% 50%',p:'Rp 650,000',d:'Anime-style character illustration, from bust to full body, fully rendered with vivid lighting.',inc:['Bust to full body','Full render','Hi-res PNG','1–2 weeks']},
-      {t:'Background',cat:'Background',img:'street.jpg',pos:'50% 50%',p:'Rp 900,000',d:'Stream rooms, city streets or fantasy scenes. 16:9 with separate layers for parallax.',inc:['16:9 scene','Layered for parallax','Day / night variant','2–3 weeks']},
-      {t:'Stinger',cat:'Animation',img:'hand.jpg',pos:'50% 55%',p:'Rp 500,000',d:'A 1–2 second animated transition with your mascot or logo. Transparent WebM, ready for OBS.',inc:['1–2 seconds','Transparent WebM','OBS ready','1–2 weeks']}];
-    const box=document.getElementById('sx');let cur=0;
-    box.innerHTML=SV.map((v,i)=>`<article class="sx-c" role="tab" tabindex="0" data-i="${i}" aria-label="${v.t}"><img src="${v.img}" alt="${v.t} sample artwork" style="object-position:${v.pos}" loading="lazy"><span class="sx-no"><i></i>0${i+1}<span> / 04</span></span><span class="sx-v">${v.t}</span><div class="sx-b"><span class="sx-cat">${v.cat}</span><h3>${v.t}</h3><p>${v.d}</p><ul class="sx-inc">${v.inc.map(x=>`<li>${x}</li>`).join('')}</ul><div class="sx-foot"><span class="sx-pr"><small>from</small><b>${v.p}</b></span><a class="btn red" href="#pesan">Order this</a><a class="btn" href="#karya">See works</a></div></div></article>`).join('');
-    const cs=[...box.children];
-    const set=i=>{cur=i;cs.forEach((c,j)=>{c.classList.toggle('on',j===i);c.setAttribute('aria-selected',j===i)})};
-    box.addEventListener('click',e=>{const c=e.target.closest('.sx-c');if(c&&!e.target.closest('a'))set(+c.dataset.i)});
-    box.addEventListener('mouseover',e=>{if(!matchMedia('(hover:hover) and (min-width:901px)').matches)return;const c=e.target.closest('.sx-c');if(c&&+c.dataset.i!==cur)set(+c.dataset.i)});
-    box.addEventListener('keydown',e=>{const c=e.target.closest('.sx-c');if(!c||e.target.closest('a'))return;
-      if(e.key==='Enter'||e.key===' '){e.preventDefault();set(+c.dataset.i)}
-      if(/Arrow(Right|Down|Left|Up)/.test(e.key)){e.preventDefault();const n=(cur+(/Right|Down/.test(e.key)?1:3))%4;set(n);cs[n].focus()}});
+      {t:'Live2D Model',cat:'Live2D',p:'Rp 7,500,000',d:'VTuber model from art to rigging. Tracking-ready with toggle expressions, .moc3 files and a layered PSD.',inc:[['Includes','Art + rigging'],['Files','.moc3 + layered PSD'],['Extras','Toggle expressions'],['Time','4–8 weeks']],w:['girl.jpg','nel.jpg'],soon:1},
+      {t:'Anime Illustration',cat:'Illustration',p:'Rp 650,000',d:'Anime-style character illustration, from bust to full body, fully rendered with vivid lighting.',inc:[['Includes','Bust to full body'],['Render','Full render'],['Files','Hi-res PNG'],['Time','1–2 weeks']],w:['featured.jpg','nel.jpg','girl.jpg','hand.jpg']},
+      {t:'Background',cat:'Background',p:'Rp 900,000',d:'Stream rooms, city streets or fantasy scenes. 16:9 with separate layers for parallax.',inc:[['Format','16:9 scene'],['Files','Layered for parallax'],['Extras','Day / night variant'],['Time','2–3 weeks']],w:['street.jpg','featured.jpg','samurai.jpg']},
+      {t:'Stinger',cat:'Animation',p:'Rp 500,000',d:'A 1–2 second animated transition with your mascot or logo. Transparent WebM, ready for OBS.',inc:[['Length','1–2 seconds'],['Files','Transparent WebM'],['Use','OBS ready'],['Time','1–2 weeks']],w:['hand.jpg'],soon:1}];
+    const tabs=document.getElementById('sy-tabs'),box=document.getElementById('sy');
+    tabs.innerHTML=SV.map((v,i)=>`<button type="button" role="tab" data-i="${i}"><em>0${i+1}</em>${v.t}</button>`).join('');
+    function set(i){
+      const v=SV[i];[...tabs.children].forEach((b,j)=>b.setAttribute('aria-selected',j===i));
+      box.innerHTML=`<div class="sy-info"><span class="sv-cat" style="font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--red)">${v.cat} · 0${i+1} / 04</span><h3>${v.t}</h3><p>${v.d}</p><ul class="sy-inc">${v.inc.map(([k,x])=>`<li>${x}<span>${k}</span></li>`).join('')}</ul><div class="sy-pr"><small>from</small><b>${v.p}</b></div><a class="btn red" href="#pesan">Order this <span aria-hidden="true">→</span></a></div>
+        <div class="sy-gal">${v.w.map(src=>`<button type="button" data-src="${src}" aria-label="View ${v.t} sample"><img src="${src}" alt="${v.t} sample" loading="lazy"></button>`).join('')}${v.soon?'<div class="soon">More samples soon</div>':''}</div>`;
+      box.classList.remove('in');void box.offsetWidth;box.classList.add('in');
+    }
+    tabs.addEventListener('click',e=>{const b=e.target.closest('button');if(b)set(+b.dataset.i)});
+    tabs.addEventListener('keydown',e=>{if(!/Arrow(Left|Right)/.test(e.key))return;const c=[...tabs.children],i=c.indexOf(document.activeElement),n=(i+(e.key==='ArrowRight'?1:3))%4;set(n);c[n].focus()});
+    box.addEventListener('click',e=>{const b=e.target.closest('.sy-gal button');if(!b)return;const lb=document.getElementById('pf-lb'),i=SV[+tabs.querySelector('[aria-selected="true"]').dataset.i];
+      document.getElementById('pf-lb-img').src=b.dataset.src;document.getElementById('pf-lb-img').alt=i.t+' sample';document.getElementById('pf-lb-t').textContent=i.t;document.getElementById('pf-lb-m').textContent=i.cat+' · sample';lb.showModal()});
     set(0);
   })();
   /* ---------- router ---------- */
