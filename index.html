@@ -835,33 +835,36 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
 .sec-head > .btn,.sec-head .pf-filter{flex:none}
 .sv-cta{flex:none}
 @media (max-width:480px){.sv-head{flex-direction:column;align-items:flex-start}}
-/* services: tabs + info + portfolio previews (masonry, any image size) */
-.sy-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:clamp(24px,3vw,36px)}
-.sy-tabs button{display:flex;align-items:center;gap:8px;font:800 13px var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--gray);background:none;border:1px solid var(--ink-3);border-radius:999px;padding:10px 18px;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
-.sy-tabs button em{font:600 11px var(--mono);font-style:normal;color:var(--muted)}
-.sy-tabs button:hover{border-color:var(--gray);color:var(--paper)}
-.sy-tabs button[aria-selected="true"]{background:var(--red);border-color:var(--red);color:#fff}
-.sy-tabs button[aria-selected="true"] em{color:rgba(255,255,255,.75)}
-.sy{display:grid;grid-template-columns:minmax(260px,1fr) minmax(0,2.1fr);gap:clamp(28px,4vw,64px);align-items:start}
-.sy.in{animation:fadeup .4s var(--ease) both}
-.sy-info{position:sticky;top:96px;display:grid;gap:14px}
-.sy-info h3{font:900 clamp(30px,3.2vw,46px)/.95 var(--display);text-transform:uppercase;letter-spacing:-.03em}
-.sy-info p{margin:0;color:var(--gray)}
-.sy-inc{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink-3)}
-.sy-inc li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--ink-3);font-size:14px;color:var(--gray)}
-.sy-inc li span{color:var(--muted);font:600 12px var(--mono)}
-.sy-pr small{display:block;font:600 11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
-.sy-pr b{font:900 26px var(--display)}
-.sy-info .btn{justify-self:start}
-.sy-gal{columns:2;column-gap:12px}
-.sy-gal button{display:block;width:100%;margin:0 0 12px;padding:0;border:0;background:var(--ink-2);border-radius:8px;overflow:hidden;cursor:zoom-in;break-inside:avoid;position:relative}
-.sy-gal img{display:block;width:100%;height:auto;transition:transform .6s var(--ease)}
-.sy-gal button:hover img{transform:scale(1.03)}
-.sy-gal button:focus-visible{outline:2px solid var(--red);outline-offset:3px}
-.sy-gal .soon{aspect-ratio:4/3;display:grid;place-items:center;border:1px dashed var(--ink-3);background:none;cursor:default;font:600 11px var(--mono);color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
-@media (min-width:1400px){.sy-gal{columns:3}}
-@media (max-width:900px){.sy{grid-template-columns:1fr}.sy-info{position:static}}
-@media (max-width:480px){.sy-tabs{flex-wrap:nowrap;overflow-x:auto;margin-inline:-16px;padding-inline:16px;scrollbar-width:none}.sy-tabs button{flex:none}.sy-gal{column-gap:8px}.sy-gal button{margin-bottom:8px}}
+/* services: banner + text tabs + package card grid */
+.sz-ban{position:relative;overflow:hidden;border-radius:14px;min-height:clamp(220px,24vw,320px);display:flex;align-items:center;padding:clamp(24px,4vw,56px);background:linear-gradient(90deg,var(--ink) 30%,rgba(20,21,20,.55) 60%,rgba(20,21,20,.1)),url(featured.jpg) 70% 45%/cover;isolation:isolate}
+.sz-ban::before{content:"";position:absolute;left:-5%;bottom:-14px;width:62%;height:26px;background:var(--red);transform:rotate(-1.5deg);opacity:.95;z-index:-1;-webkit-mask:linear-gradient(90deg,transparent,#000 20%,#000 80%,transparent);mask:linear-gradient(90deg,transparent,#000 20%,#000 80%,transparent)}
+.sz-ban::after{content:"";position:absolute;inset:0;background:var(--kawung) center/40px 40px;opacity:.06;z-index:-1;-webkit-mask:linear-gradient(90deg,#000,transparent 60%);mask:linear-gradient(90deg,#000,transparent 60%)}
+.sz-ban-tx{display:grid;gap:12px;justify-items:start;max-width:480px}
+.sz-eye{font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--red);display:flex;gap:8px;align-items:center}
+.sz-ban h2{font:900 clamp(44px,6vw,84px)/.9 var(--display);text-transform:uppercase;letter-spacing:-.04em}
+.sz-ban p{margin:0;color:var(--gray)}
+.sz-wm{position:absolute;right:3%;bottom:-6%;font:700 clamp(60px,9vw,130px)/1 var(--jv);color:rgba(236,236,236,.08);pointer-events:none}
+.sz-tabs{display:flex;gap:clamp(16px,2.4vw,30px);margin:clamp(28px,4vw,44px) 0 22px;padding-bottom:12px;border-bottom:1px solid var(--ink-3);overflow-x:auto;scrollbar-width:none}
+.sz-tabs button{flex:none;background:none;border:0;padding:0 0 10px;margin-bottom:-13px;border-bottom:3px solid transparent;font:900 clamp(16px,1.6vw,22px)/1 var(--display);text-transform:uppercase;letter-spacing:-.01em;color:var(--muted);cursor:pointer;transition:color .2s,border-color .2s}
+.sz-tabs button:hover{color:var(--gray)}
+.sz-tabs button[aria-selected="true"]{color:var(--paper);border-color:var(--red)}
+.sz-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.4vw,20px)}
+.sz-card{position:relative;display:flex;flex-direction:column;background:var(--ink-2);border:1px solid var(--ink-3);border-radius:10px;overflow:hidden;cursor:pointer;color:inherit;font:inherit;text-align:left;padding:0;transition:transform .35s var(--ease),border-color .25s;animation:fadeup .4s var(--ease) both}
+.sz-card:hover{transform:translateY(-4px);border-color:rgba(255,59,60,.6)}
+.sz-card:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.sz-badge{position:absolute;top:0;left:14px;z-index:2;font:800 11px var(--display);letter-spacing:.06em;text-transform:uppercase;padding:7px 12px;border-radius:0 0 6px 6px;background:var(--red);color:#fff}
+.sz-badge.soon{background:var(--ink-3);color:var(--gray)}
+.sz-img{position:relative;aspect-ratio:1/1;display:grid;place-items:center;background:radial-gradient(circle at 50% 45%,#232423,#161716 70%)}
+.sz-img img{position:absolute;inset:clamp(18px,2vw,28px);width:calc(100% - 2*clamp(18px,2vw,28px));height:calc(100% - 2*clamp(18px,2vw,28px));object-fit:contain;filter:drop-shadow(0 14px 18px rgba(0,0,0,.6));transition:transform .6s var(--ease)}
+.sz-card:hover .sz-img img{transform:scale(1.04)}
+.sz-img .frog{width:38%;aspect-ratio:1;opacity:.25}
+.sz-meta{display:grid;gap:5px;flex:1;align-content:start;padding:14px 16px 16px;border-top:1px solid var(--ink-3)}
+.sz-meta small{font:600 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.sz-meta strong{font:900 15px/1.2 var(--display);text-transform:uppercase;text-wrap:balance}
+.sz-meta span{font:600 13px var(--mono);color:var(--gray);white-space:nowrap}
+.sz-empty{grid-column:1/-1;color:var(--muted);text-align:center;padding:40px 0}
+@media (max-width:1100px){.sz-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.sz-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sz-ban{background:linear-gradient(0deg,var(--ink) 25%,rgba(20,21,20,.4)),url(featured.jpg) 62% 40%/cover;align-items:flex-end;min-height:300px}.sz-meta{padding:12px 12px 14px}.sz-meta strong{font-size:13px}.sz-meta span{font-size:12px}.sz-wm{display:none}}
 
 /* unified simple section heads + steps grid */
 .order .sec-head h2::before{display:none}
@@ -1005,12 +1008,12 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
 
 <section class="svc3" id="layanan" data-pg="layanan">
   <div class="wrap">
-    <div class="sv-head">
-      <div><h2>Services</h2><p>Four core commissions for creators and VTubers. <span class="tag">sample prices</span></p></div>
-      <a class="btn red sv-cta" href="#pesan">Order <span aria-hidden="true">→</span></a>
+    <div class="sz-ban">
+      <div class="sz-ban-tx"><span class="sz-eye">Commissions open · <span class="tag">sample prices</span></span><h2>Services</h2><p>Live2D, illustration, backgrounds and stingers for creators and VTubers.</p><a class="btn red" href="#pesan">Order <span aria-hidden="true">→</span></a></div>
+      <span class="sz-wm" aria-hidden="true">ꦮꦶꦗꦶ</span>
     </div>
-    <div class="sy-tabs" id="sy-tabs" role="tablist" aria-label="Services"></div>
-    <div class="sy" id="sy" role="tabpanel"></div>
+    <div class="sz-tabs" id="sz-tabs" role="tablist" aria-label="Filter services"></div>
+    <div class="sz-grid" id="sz-grid"></div>
   </div>
 </section>
 
@@ -1304,27 +1307,32 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
       document.getElementById('pf-lb-t').textContent=it.dataset.title;document.getElementById('pf-lb-m').textContent=it.dataset.meta;lb.showModal()});
     document.getElementById('pf-lb-x').onclick=()=>lb.close();lb.addEventListener('click',e=>{if(e.target===lb)lb.close()});
   })();
-  /* ---------- services: tabs + portfolio previews ---------- */
+  /* ---------- services: package cards ---------- */
   (()=>{
-    /* add previews per service in "w": any size works, images keep their own shape */
-    const SV=[
-      {t:'Live2D Model',cat:'Live2D',p:'Rp 7,500,000',d:'VTuber model from art to rigging. Tracking-ready with toggle expressions, .moc3 files and a layered PSD.',inc:[['Includes','Art + rigging'],['Files','.moc3 + layered PSD'],['Extras','Toggle expressions'],['Time','4–8 weeks']],w:['girl.jpg','nel.jpg'],soon:1},
-      {t:'Anime Illustration',cat:'Illustration',p:'Rp 650,000',d:'Anime-style character illustration, from bust to full body, fully rendered with vivid lighting.',inc:[['Includes','Bust to full body'],['Render','Full render'],['Files','Hi-res PNG'],['Time','1–2 weeks']],w:['featured.jpg','nel.jpg','girl.jpg','hand.jpg']},
-      {t:'Background',cat:'Background',p:'Rp 900,000',d:'Stream rooms, city streets or fantasy scenes. 16:9 with separate layers for parallax.',inc:[['Format','16:9 scene'],['Files','Layered for parallax'],['Extras','Day / night variant'],['Time','2–3 weeks']],w:['street.jpg','featured.jpg','samurai.jpg']},
-      {t:'Stinger',cat:'Animation',p:'Rp 500,000',d:'A 1–2 second animated transition with your mascot or logo. Transparent WebM, ready for OBS.',inc:[['Length','1–2 seconds'],['Files','Transparent WebM'],['Use','OBS ready'],['Time','1–2 weeks']],w:['hand.jpg'],soon:1}];
-    const tabs=document.getElementById('sy-tabs'),box=document.getElementById('sy');
-    tabs.innerHTML=SV.map((v,i)=>`<button type="button" role="tab" data-i="${i}"><em>0${i+1}</em>${v.t}</button>`).join('');
-    function set(i){
-      const v=SV[i];[...tabs.children].forEach((b,j)=>b.setAttribute('aria-selected',j===i));
-      box.innerHTML=`<div class="sy-info"><span class="sv-cat" style="font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--red)">${v.cat} · 0${i+1} / 04</span><h3>${v.t}</h3><p>${v.d}</p><ul class="sy-inc">${v.inc.map(([k,x])=>`<li>${x}<span>${k}</span></li>`).join('')}</ul><div class="sy-pr"><small>from</small><b>${v.p}</b></div><a class="btn red" href="#pesan">Order this <span aria-hidden="true">→</span></a></div>
-        <div class="sy-gal">${v.w.map(src=>`<button type="button" data-src="${src}" aria-label="View ${v.t} sample"><img src="${src}" alt="${v.t} sample" loading="lazy"></button>`).join('')}${v.soon?'<div class="soon">More samples soon</div>':''}</div>`;
-      box.classList.remove('in');void box.offsetWidth;box.classList.add('in');
+    /* one card per package or sample; img can be any size (it is never cropped). no img = frog placeholder */
+    const CATS=[['all','All'],['l2d','Live2D'],['il','Illustration'],['bg','Background'],['stg','Stinger']];
+    const PK=[
+      {c:'l2d',t:'Full Body Live2D Model',img:'girl.jpg',p:'Rp 7,500,000'},
+      {c:'l2d',t:'Half Body Live2D Model',img:'nel.jpg',p:'Rp 4,500,000'},
+      {c:'il',t:'Illustration + Background',img:'featured.jpg',p:'Rp 1,500,000'},
+      {c:'il',t:'Character Illustration',img:'hand.jpg',p:'Rp 650,000'},
+      {c:'bg',t:'Stream Background',img:'street.jpg',p:'Rp 900,000'},
+      {c:'bg',t:'Scene Background',img:'samurai.jpg',p:'Rp 1,200,000'},
+      {c:'stg',t:'Logo Stinger',p:'Rp 500,000',soon:1},
+      {c:'stg',t:'Mascot Stinger',p:'Rp 750,000',soon:1}];
+    const name=Object.fromEntries(CATS),tabs=document.getElementById('sz-tabs'),grid=document.getElementById('sz-grid');
+    tabs.innerHTML=CATS.map(([k,v])=>`<button type="button" role="tab" data-f="${k}">${v}</button>`).join('');
+    function show(f){
+      [...tabs.children].forEach(b=>b.setAttribute('aria-selected',b.dataset.f===f));
+      const L=PK.map((v,i)=>[v,i]).filter(([v])=>f==='all'||v.c===f);
+      grid.innerHTML=L.map(([v,i],n)=>`<button type="button" class="sz-card" data-i="${i}" style="animation-delay:${n*45}ms"><span class="sz-badge${v.soon?' soon':''}">${v.soon?'Samples soon':'Open'}</span><span class="sz-img">${v.img?`<img src="${v.img}" alt="${v.t} sample" loading="lazy">`:'<i class="frog"></i>'}</span><span class="sz-meta"><small>${name[v.c]}</small><strong>${v.t}</strong><span>from ${v.p}</span></span></button>`).join('')||'<p class="sz-empty">Nothing here yet.</p>';
     }
-    tabs.addEventListener('click',e=>{const b=e.target.closest('button');if(b)set(+b.dataset.i)});
-    tabs.addEventListener('keydown',e=>{if(!/Arrow(Left|Right)/.test(e.key))return;const c=[...tabs.children],i=c.indexOf(document.activeElement),n=(i+(e.key==='ArrowRight'?1:3))%4;set(n);c[n].focus()});
-    box.addEventListener('click',e=>{const b=e.target.closest('.sy-gal button');if(!b)return;const lb=document.getElementById('pf-lb'),i=SV[+tabs.querySelector('[aria-selected="true"]').dataset.i];
-      document.getElementById('pf-lb-img').src=b.dataset.src;document.getElementById('pf-lb-img').alt=i.t+' sample';document.getElementById('pf-lb-t').textContent=i.t;document.getElementById('pf-lb-m').textContent=i.cat+' · sample';lb.showModal()});
-    set(0);
+    tabs.addEventListener('click',e=>{const b=e.target.closest('button');if(b)show(b.dataset.f)});
+    grid.addEventListener('click',e=>{const b=e.target.closest('.sz-card');if(!b)return;const v=PK[+b.dataset.i];
+      if(!v.img){location.hash='#pesan';return}
+      const lb=document.getElementById('pf-lb');document.getElementById('pf-lb-img').src=v.img;document.getElementById('pf-lb-img').alt=v.t+' sample';
+      document.getElementById('pf-lb-t').textContent=v.t;document.getElementById('pf-lb-m').textContent=name[v.c]+' · from '+v.p;lb.showModal()});
+    show('all');
   })();
   /* ---------- router ---------- */
   const home=document.getElementById('home'),gacha=document.getElementById('gacha');
