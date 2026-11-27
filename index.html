@@ -835,46 +835,64 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
 .sec-head > .btn,.sec-head .pf-filter{flex:none}
 .sv-cta{flex:none}
 @media (max-width:480px){.sv-head{flex-direction:column;align-items:flex-start}}
-/* services: banner + text tabs + package card grid */
-.sz-ban{position:relative;overflow:hidden;border-radius:14px;min-height:clamp(220px,24vw,320px);display:flex;align-items:center;padding:clamp(24px,4vw,56px);background:linear-gradient(90deg,var(--ink) 30%,rgba(20,21,20,.55) 60%,rgba(20,21,20,.1)),url(featured.jpg) 70% 45%/cover;isolation:isolate}
-.sz-ban::before{content:"";position:absolute;left:-5%;bottom:-14px;width:62%;height:26px;background:var(--red);transform:rotate(-1.5deg);opacity:.95;z-index:-1;-webkit-mask:linear-gradient(90deg,transparent,#000 20%,#000 80%,transparent);mask:linear-gradient(90deg,transparent,#000 20%,#000 80%,transparent)}
-.sz-ban::after{content:"";position:absolute;inset:0;background:var(--kawung) center/40px 40px;opacity:.06;z-index:-1;-webkit-mask:linear-gradient(90deg,#000,transparent 60%);mask:linear-gradient(90deg,#000,transparent 60%)}
-.sz-ban-tx{display:grid;gap:12px;justify-items:start;max-width:480px}
-.sz-eye{font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--red);display:flex;gap:8px;align-items:center}
-.sz-ban h2{font:900 clamp(44px,6vw,84px)/.9 var(--display);text-transform:uppercase;letter-spacing:-.04em}
-.sz-ban p{margin:0;color:var(--gray)}
-.sz-wm{position:absolute;right:3%;bottom:-6%;font:700 clamp(60px,9vw,130px)/1 var(--jv);color:rgba(236,236,236,.08);pointer-events:none}
-.sz-tabs{display:flex;gap:clamp(16px,2.4vw,30px);margin:clamp(28px,4vw,44px) 0 22px;padding-bottom:12px;border-bottom:1px solid var(--ink-3);overflow-x:auto;scrollbar-width:none}
-.sz-tabs button{flex:none;background:none;border:0;padding:0 0 10px;margin-bottom:-13px;border-bottom:3px solid transparent;font:900 clamp(16px,1.6vw,22px)/1 var(--display);text-transform:uppercase;letter-spacing:-.01em;color:var(--muted);cursor:pointer;transition:color .2s,border-color .2s}
-.sz-tabs button:hover{color:var(--gray)}
-.sz-tabs button[aria-selected="true"]{color:var(--paper);border-color:var(--red)}
-.sz-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.4vw,20px)}
-.sz-card{position:relative;display:flex;flex-direction:column;background:var(--ink-2);border:1px solid var(--ink-3);border-radius:10px;overflow:hidden;cursor:pointer;color:inherit;font:inherit;text-align:left;padding:0;transition:transform .35s var(--ease),border-color .25s;animation:fadeup .4s var(--ease) both}
-.sz-card:hover{transform:translateY(-4px);border-color:rgba(255,59,60,.6)}
-.sz-card:focus-visible{outline:2px solid var(--red);outline-offset:3px}
-.sz-badge{position:absolute;top:0;left:14px;z-index:2;font:800 11px var(--display);letter-spacing:.06em;text-transform:uppercase;padding:7px 12px;border-radius:0 0 6px 6px;background:var(--red);color:#fff}
-.sz-badge.soon{background:var(--ink-3);color:var(--gray)}
-.sz-img{position:relative;aspect-ratio:1/1;display:grid;place-items:center;background:radial-gradient(circle at 50% 45%,#232423,#161716 70%)}
-.sz-img img{position:absolute;inset:clamp(18px,2vw,28px);width:calc(100% - 2*clamp(18px,2vw,28px));height:calc(100% - 2*clamp(18px,2vw,28px));object-fit:contain;filter:drop-shadow(0 14px 18px rgba(0,0,0,.6));transition:transform .6s var(--ease)}
-.sz-card:hover .sz-img img{transform:scale(1.04)}
-.sz-img .frog{width:38%;aspect-ratio:1;opacity:.25}
-.sz-meta{display:grid;gap:5px;flex:1;align-content:start;padding:14px 16px 16px;border-top:1px solid var(--ink-3)}
-.sz-meta small{font:600 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.sz-meta strong{font:900 15px/1.2 var(--display);text-transform:uppercase;text-wrap:balance}
-.sz-meta span{font:600 13px var(--mono);color:var(--gray);white-space:nowrap}
-.sz-empty{grid-column:1/-1;color:var(--muted);text-align:center;padding:40px 0}
-@media (max-width:1100px){.sz-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:760px){.sz-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
- .sz-ban{display:block;min-height:0;padding:calc(50vw - 8px) 18px 22px;background:linear-gradient(180deg,rgba(27,28,27,0) calc(50vw - 90px),var(--ink-2) calc(50vw + 6px)),url(featured.jpg) 60% 0/auto calc(50vw + 30px) no-repeat,var(--ink-2)}
- .sz-ban::after{display:none}.sz-ban::before{width:80%;height:14px;bottom:-6px}
- .sz-ban-tx{gap:10px}.sz-ban h2{font-size:44px}.sz-ban p{font-size:14px}.sz-ban .btn{padding:10px 20px;font-size:13px}
- .sz-eye{font-size:10px}
- .sz-tabs{gap:18px;margin:24px -16px 16px;padding:0 16px 10px;-webkit-mask:linear-gradient(90deg,#000 85%,transparent);mask:linear-gradient(90deg,#000 85%,transparent)}
- .sz-tabs button{font-size:14px;padding-bottom:8px;margin-bottom:-11px}
- .sz-card:hover{transform:none}
- .sz-img img{inset:10px;width:calc(100% - 20px);height:calc(100% - 20px)}
- .sz-badge{left:10px;font-size:9px;padding:5px 8px}
- .svc3{padding-top:24px}.sz-meta{padding:12px 12px 14px}.sz-meta strong{font-size:13px}.sz-meta span{font-size:12px}.sz-wm{display:none}}
+/* portfolio: simple gapless grid */
+.pf .pf-grid{gap:0;grid-auto-rows:clamp(220px,22vw,380px)}
+.pf .pf-item{border-radius:0}
+.pf .pf-item::after{opacity:0}
+.pf .pf-item:hover::after,.pf .pf-item:focus-visible::after{opacity:1}
+.pf .pf-cap{opacity:0;transform:translateY(8px);transition:opacity .35s,transform .4s var(--ease)}
+.pf .pf-item:hover .pf-cap,.pf .pf-item:focus-visible .pf-cap{opacity:1;transform:none}
+.pf .pf-item.soon .pf-cap{opacity:1;transform:none}
+.pf .pf-filter button{border:0;border-radius:0;padding:4px 0;margin-right:18px;background:none;font:800 13px var(--display);text-transform:uppercase;color:var(--muted);border-bottom:2px solid transparent}
+.pf .pf-filter button[aria-pressed="true"]{background:none;color:var(--paper);border-color:var(--red)}
+@media (hover:none){.pf .pf-cap{opacity:1;transform:none}.pf .pf-item::after{opacity:.85}}
+/* services: simple shop (sidebar filter + product grid) */
+.shop{max-width:1320px}
+.sh-top{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.sh-top h2{font:900 clamp(30px,3vw,40px)/1 var(--display);letter-spacing:-.02em}
+.sh{display:grid;grid-template-columns:250px minmax(0,1fr);gap:clamp(24px,3vw,40px);align-items:start}
+.sh-side{border:1px solid var(--ink-3);border-radius:8px;position:sticky;top:88px}
+.sh-ftog{display:none}
+#sh-cats{display:grid;gap:11px}
+.sh-search{display:flex;align-items:center;gap:8px;margin:10px;padding:10px 12px;border:1px solid var(--ink-3);border-radius:6px;background:var(--ink)}
+.sh-search svg{width:16px;height:16px;color:var(--muted);flex:none}
+.sh-search input{all:unset;flex:1;min-width:0;font:14px var(--body);color:var(--paper)}
+.sh-side fieldset{margin:0;border:0;border-top:1px solid var(--ink-3);padding:14px 16px 16px;display:grid;gap:11px}
+.sh-side legend{float:left;width:100%;margin-bottom:4px;font:800 13px var(--display);text-transform:uppercase;letter-spacing:.03em}
+.sh-side label{display:flex;align-items:center;gap:10px;font:600 14px var(--body);color:var(--gray);cursor:pointer}
+.sh-side label:hover{color:var(--paper)}
+.sh-side input[type=checkbox],.sh-side input[type=radio]{appearance:none;width:16px;height:16px;margin:0;border:1.5px solid var(--muted);background:none;display:grid;place-items:center;cursor:pointer;flex:none}
+.sh-side input[type=checkbox]{border-radius:3px}.sh-side input[type=radio]{border-radius:50%}
+.sh-side input:checked{border-color:var(--red)}
+.sh-side input[type=checkbox]:checked{background:var(--red)}
+.sh-side input[type=radio]:checked::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--red)}
+.sh-side input:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.sh-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px;font:600 12px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.sh-sort{display:flex;align-items:center;gap:6px;border:1px solid var(--ink-3);border-radius:6px;padding:8px 12px;font:800 13px var(--display);color:var(--paper);text-transform:none;letter-spacing:0}
+.sh-sort select{all:unset;cursor:pointer;font:600 13px var(--display)}
+.sh-sort select option{background:var(--ink);color:var(--paper)}
+.sh-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(28px,3vw,44px) clamp(16px,2vw,28px)}
+.sh-it{all:unset;cursor:pointer;display:grid;gap:12px;align-content:start;animation:fadeup .35s var(--ease) both}
+.sh-img{position:relative;aspect-ratio:1/1;background:var(--ink-2);overflow:hidden}
+.sh-img img{position:absolute;inset:8%;width:84%;height:84%;object-fit:contain;filter:drop-shadow(0 16px 22px rgba(0,0,0,.55));transition:transform .6s var(--ease)}
+.sh-it:hover .sh-img img{transform:scale(1.04)}
+.sh-img .frog{position:absolute;inset:0;margin:auto;width:34%;aspect-ratio:1;opacity:.22}
+.sh-img em{position:absolute;left:0;top:0;font:800 10px var(--display);font-style:normal;letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;background:var(--ink-3);color:var(--gray)}
+.sh-it:focus-visible .sh-img{outline:2px solid var(--red);outline-offset:3px}
+.sh-it strong{font:800 14px/1.25 var(--display);text-transform:uppercase;letter-spacing:.01em}
+.sh-it:hover strong{color:var(--red)}
+.sh-it span.p{font:600 13px var(--body);color:var(--gray);margin-top:-6px}
+.sh-empty{grid-column:1/-1;color:var(--muted);padding:40px 0}
+@media (max-width:1100px){.sh-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){
+ .svc3{padding-top:24px}
+ .sh{grid-template-columns:1fr;gap:18px}
+ .sh-side{position:static}
+ .sh-ftog{all:unset;display:flex;justify-content:space-between;width:100%;box-sizing:border-box;padding:12px 16px;font:800 13px var(--display);text-transform:uppercase;cursor:pointer}
+ .sh-fbody{display:none}.sh-side.open .sh-fbody{display:block}.sh-side.open .sh-ftog span{transform:rotate(45deg)}
+ .sh-grid{gap:24px 12px}
+ .sh-it strong{font-size:12.5px}.sh-it span.p{font-size:12px}
+}
 
 /* unified simple section heads + steps grid */
 .order .sec-head h2::before{display:none}
@@ -893,7 +911,7 @@ footer{padding-block:40px 44px;border-top:1px solid var(--ink-3)}
 nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,.92);backdrop-filter:blur(10px);padding-top:env(safe-area-inset-top,0px);border-bottom:1px solid #161616}
 .tb{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:64px;max-width:var(--maxw);margin:0 auto;padding:0 clamp(16px,2.6vw,40px);gap:16px}
 .tb-l{display:flex;align-items:center;min-width:0}
-.topbar .navlinks{display:flex;justify-self:center;gap:clamp(16px,2vw,30px);font:700 14px var(--display);white-space:nowrap}
+.topbar .navlinks{display:flex;justify-self:center;gap:clamp(18px,2.4vw,36px);font:800 13px var(--display);text-transform:uppercase;letter-spacing:.02em;white-space:nowrap}
 .topbar .navlinks a{opacity:1;color:#fff;position:relative;padding:6px 0}
 .topbar .navlinks a:hover,.topbar .navlinks a[aria-current]{color:var(--red)}
 .topbar .navlinks a[aria-current]::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--red);border-radius:2px}
@@ -1017,13 +1035,29 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
 <div class="band" data-pg="home"><img class="par" src="samurai.jpg" alt="Anime illustration of a white-haired swordswoman drawing a katana against a red background" style="object-position:50% 35%"><span class="cap">Seeds Studio · Jogja</span></div>
 
 <section class="svc3" id="layanan" data-pg="layanan">
-  <div class="wrap">
-    <div class="sz-ban">
-      <div class="sz-ban-tx"><span class="sz-eye">Commissions open · <span class="tag">sample prices</span></span><h2>Services</h2><p>Live2D, illustration, backgrounds and stingers for creators and VTubers.</p><a class="btn red" href="#pesan">Order <span aria-hidden="true">→</span></a></div>
-      <span class="sz-wm" aria-hidden="true">ꦮꦶꦗꦶ</span>
+  <div class="wrap shop">
+    <div class="sh-top"><h2>Services</h2><span class="tag">sample prices</span></div>
+    <div class="sh">
+      <aside class="sh-side" id="sh-side">
+        <button type="button" class="sh-ftog" id="sh-ftog" aria-expanded="false">Filter <span aria-hidden="true">+</span></button>
+        <div class="sh-fbody">
+          <label class="sh-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2"/></svg><input type="search" id="sh-q" placeholder="Search" aria-label="Search services"></label>
+          <fieldset><legend>Categories</legend><div id="sh-cats"></div></fieldset>
+          <fieldset><legend>Availability</legend>
+            <label><input type="radio" name="sh-av" value="all" checked> All</label>
+            <label><input type="radio" name="sh-av" value="open"> Open now</label></fieldset>
+          <fieldset><legend>Price</legend>
+            <label><input type="radio" name="sh-pr" value="0" checked> Any price</label>
+            <label><input type="radio" name="sh-pr" value="1"> Under Rp 1,000,000</label>
+            <label><input type="radio" name="sh-pr" value="2"> Rp 1,000,000 – 5,000,000</label>
+            <label><input type="radio" name="sh-pr" value="3"> Rp 5,000,000 +</label></fieldset>
+        </div>
+      </aside>
+      <div class="sh-main">
+        <div class="sh-bar"><span id="sh-count"></span><label class="sh-sort">Sort: <select id="sh-sort"><option value="f">Featured</option><option value="lo">Price, low to high</option><option value="hi">Price, high to low</option></select></label></div>
+        <div class="sh-grid" id="sh-grid"></div>
+      </div>
     </div>
-    <div class="sz-tabs" id="sz-tabs" role="tablist" aria-label="Filter services"></div>
-    <div class="sz-grid" id="sz-grid"></div>
   </div>
 </section>
 
@@ -1317,32 +1351,37 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
       document.getElementById('pf-lb-t').textContent=it.dataset.title;document.getElementById('pf-lb-m').textContent=it.dataset.meta;lb.showModal()});
     document.getElementById('pf-lb-x').onclick=()=>lb.close();lb.addEventListener('click',e=>{if(e.target===lb)lb.close()});
   })();
-  /* ---------- services: package cards ---------- */
+  /* ---------- services: simple shop ---------- */
   (()=>{
-    /* one card per package or sample; img can be any size (it is never cropped). no img = frog placeholder */
-    const CATS=[['all','All'],['l2d','Live2D'],['il','Illustration'],['bg','Background'],['stg','Stinger']];
+    /* one item per package; img can be any size (never cropped). no img = frog placeholder. n = price for sorting/filtering */
+    const CATS=[['l2d','Live2D'],['il','Illustration'],['bg','Background'],['stg','Stinger']];
     const PK=[
-      {c:'l2d',t:'Full Body Live2D Model',img:'girl.jpg',p:'Rp 7,500,000'},
-      {c:'l2d',t:'Half Body Live2D Model',img:'nel.jpg',p:'Rp 4,500,000'},
-      {c:'il',t:'Illustration + Background',img:'featured.jpg',p:'Rp 1,500,000'},
-      {c:'il',t:'Character Illustration',img:'hand.jpg',p:'Rp 650,000'},
-      {c:'bg',t:'Stream Background',img:'street.jpg',p:'Rp 900,000'},
-      {c:'bg',t:'Scene Background',img:'samurai.jpg',p:'Rp 1,200,000'},
-      {c:'stg',t:'Logo Stinger',p:'Rp 500,000',soon:1},
-      {c:'stg',t:'Mascot Stinger',p:'Rp 750,000',soon:1}];
-    const name=Object.fromEntries(CATS),tabs=document.getElementById('sz-tabs'),grid=document.getElementById('sz-grid');
-    tabs.innerHTML=CATS.map(([k,v])=>`<button type="button" role="tab" data-f="${k}">${v}</button>`).join('');
-    function show(f){
-      [...tabs.children].forEach(b=>b.setAttribute('aria-selected',b.dataset.f===f));
-      const L=PK.map((v,i)=>[v,i]).filter(([v])=>f==='all'||v.c===f);
-      grid.innerHTML=L.map(([v,i],n)=>`<button type="button" class="sz-card" data-i="${i}" style="animation-delay:${n*45}ms"><span class="sz-badge${v.soon?' soon':''}">${v.soon?'Samples soon':'Open'}</span><span class="sz-img">${v.img?`<img src="${v.img}" alt="${v.t} sample" loading="lazy">`:'<i class="frog"></i>'}</span><span class="sz-meta"><small>${name[v.c]}</small><strong>${v.t}</strong><span>from ${v.p}</span></span></button>`).join('')||'<p class="sz-empty">Nothing here yet.</p>';
+      {c:'l2d',t:'Full Body Live2D Model',img:'girl.jpg',n:7500000},
+      {c:'l2d',t:'Half Body Live2D Model',img:'nel.jpg',n:4500000},
+      {c:'il',t:'Illustration + Background',img:'featured.jpg',n:1500000},
+      {c:'il',t:'Character Illustration',img:'hand.jpg',n:650000},
+      {c:'bg',t:'Stream Background',img:'street.jpg',n:900000},
+      {c:'bg',t:'Scene Background',img:'samurai.jpg',n:1200000},
+      {c:'stg',t:'Logo Stinger',n:500000,soon:1},
+      {c:'stg',t:'Mascot Stinger',n:750000,soon:1}];
+    const name=Object.fromEntries(CATS),$=id=>document.getElementById(id),rp=n=>'Rp '+n.toLocaleString('en-US');
+    $('sh-cats').innerHTML=CATS.map(([k,v])=>`<label><input type="checkbox" value="${k}"> ${v}</label>`).join('');
+    const side=$('sh-side'),grid=$('sh-grid');
+    function draw(){
+      const q=$('sh-q').value.trim().toLowerCase(),cs=[...side.querySelectorAll('#sh-cats input:checked')].map(i=>i.value),
+        av=side.querySelector('[name=sh-av]:checked').value,pr=side.querySelector('[name=sh-pr]:checked').value,so=$('sh-sort').value;
+      let L=PK.map((v,i)=>[v,i]).filter(([v])=>(!q||(v.t+' '+name[v.c]).toLowerCase().includes(q))&&(!cs.length||cs.includes(v.c))&&(av==='all'||!v.soon)&&
+        (pr==='0'||(pr==='1'&&v.n<1e6)||(pr==='2'&&v.n>=1e6&&v.n<=5e6)||(pr==='3'&&v.n>5e6)));
+      if(so!=='f')L.sort((a,b)=>so==='lo'?a[0].n-b[0].n:b[0].n-a[0].n);
+      $('sh-count').textContent=L.length+(L.length===1?' service':' services');
+      grid.innerHTML=L.map(([v,i],k)=>`<button type="button" class="sh-it" data-i="${i}" style="animation-delay:${k*40}ms"><span class="sh-img">${v.img?`<img src="${v.img}" alt="${v.t} sample" loading="lazy">`:'<i class="frog"></i>'}${v.soon?'<em>Samples soon</em>':''}</span><strong>${v.t}</strong><span class="p">from ${rp(v.n)}</span></button>`).join('')||'<p class="sh-empty">No services match these filters.</p>';
     }
-    tabs.addEventListener('click',e=>{const b=e.target.closest('button');if(b)show(b.dataset.f)});
-    grid.addEventListener('click',e=>{const b=e.target.closest('.sz-card');if(!b)return;const v=PK[+b.dataset.i];
+    side.addEventListener('input',draw);$('sh-sort').addEventListener('change',draw);
+    $('sh-ftog').addEventListener('click',()=>{const o=side.classList.toggle('open');$('sh-ftog').setAttribute('aria-expanded',o)});
+    grid.addEventListener('click',e=>{const b=e.target.closest('.sh-it');if(!b)return;const v=PK[+b.dataset.i];
       if(!v.img){location.hash='#pesan';return}
-      const lb=document.getElementById('pf-lb');document.getElementById('pf-lb-img').src=v.img;document.getElementById('pf-lb-img').alt=v.t+' sample';
-      document.getElementById('pf-lb-t').textContent=v.t;document.getElementById('pf-lb-m').textContent=name[v.c]+' · from '+v.p;lb.showModal()});
-    show('all');
+      $('pf-lb-img').src=v.img;$('pf-lb-img').alt=v.t+' sample';$('pf-lb-t').textContent=v.t;$('pf-lb-m').textContent=name[v.c]+' · from '+rp(v.n);$('pf-lb').showModal()});
+    draw();
   })();
   /* ---------- router ---------- */
   const home=document.getElementById('home'),gacha=document.getElementById('gacha');
