@@ -1059,8 +1059,10 @@ nav.topbar{view-transition-name:topbar}
 .btn{transition:background .25s,color .25s,transform .25s var(--ease),box-shadow .25s}
 .btn:hover{transform:translateY(-2px)}
 .btn:active{transform:translateY(0) scale(.97)}
-/* About is now the first block on Home */
-.intro{padding-block:clamp(72px,11vw,140px) clamp(64px,9vw,110px)}
+/* Home: illustration band on top, then About */
+.band.top{height:clamp(300px,50vw,640px)}
+.band.top::before{display:none}
+.intro{padding-block:clamp(56px,8vw,100px) clamp(64px,9vw,110px)}
 .intro .orn h2{font-size:clamp(30px,4vw,52px)}
 @media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),.pg-in{animation:none}.rv{opacity:1;transform:none;transition:none}}
 </style>
@@ -1103,7 +1105,9 @@ nav.topbar{view-transition-name:topbar}
 
 
 
-<section class="intro" id="tentang" data-pg="home"><span id="top"></span>
+<div class="band top" data-pg="home" id="top"><img class="par" src="samurai.jpg" alt="Anime illustration of a white-haired swordswoman drawing a katana against a red background" style="object-position:50% 35%"><span class="cap">Seeds Studio · Jogja</span></div>
+
+<section class="intro" id="tentang" data-pg="home">
   <i class="batik l" aria-hidden="true"></i><i class="batik r" aria-hidden="true"></i>
   <div class="wrap">
     <span class="salam"><b lang="jv">ꦱꦸꦒꦼꦁꦫꦮꦸꦃ</b>Sugeng rawuh · Welcome</span>
@@ -1112,7 +1116,7 @@ nav.topbar{view-transition-name:topbar}
   </div>
 </section>
 
-<div class="band" data-pg="home"><img class="par" src="samurai.jpg" alt="Anime illustration of a white-haired swordswoman drawing a katana against a red background" style="object-position:50% 35%"><span class="cap">Seeds Studio · Jogja</span></div>
+
 
 <section class="svc3" id="layanan" data-pg="layanan">
   <div class="wrap">
