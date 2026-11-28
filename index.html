@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Seeds Studio · Anime &amp; VTuber Art Studio, Yogyakarta</title>
 <meta name="description" content="Seeds Studio: Live2D models, anime illustration, backgrounds and stingers from Yogyakarta, Indonesia.">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@500;600&family=Noto+Serif+JP:wght@900&family=Noto+Sans+Javanese:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@500;600&family=Noto+Serif+JP:wght@900&family=Noto+Sans+JP:wght@500&family=Noto+Sans+Javanese:wght@500;700&display=swap">
 <style>
 @font-face{font-family:'Open Sauce Sans';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/open-sauce-sans-latin-400-normal.woff2) format('woff2')}
 @font-face{font-family:'Open Sauce Sans';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/open-sauce-sans-latin-500-normal.woff2) format('woff2')}
@@ -1216,6 +1216,21 @@ nav.topbar{background:rgba(244,241,236,.92);border-bottom:1px solid var(--ink-3)
 @media (hover:none){.gi .gc{opacity:1;transform:none}}
 @media (max-width:640px){.gal{columns:2;column-gap:8px}.gi{margin-bottom:8px;border-radius:8px}.gi .gc{padding:20px 10px 9px}.gi .gc b{font-size:13px}.gi .gc small{font-size:9px}.gi.soon .frog{height:52px}}
 @media (prefers-reduced-motion:reduce){.gi.in{animation:none}.gi img{transition:none}}
+/* Java x Japan accents */
+:root{--jps:"Noto Sans JP",sans-serif}
+.duo{display:flex;align-items:center;gap:10px;margin-bottom:10px;line-height:1}
+.duo b{font:500 15px/1.4 var(--jv);color:var(--red)}
+.duo i{font:500 11px var(--jps);font-style:normal;letter-spacing:.3em;color:var(--muted)}
+.duo b+i::before{content:"";display:inline-block;width:18px;height:1px;background:var(--ink-3);vertical-align:middle;margin-right:10px}
+.salam i{font:500 12px var(--jps);font-style:normal;letter-spacing:.2em;color:var(--paper);margin-right:10px}
+.hanko{display:inline-grid;place-items:center;flex:none;width:46px;height:46px;border:2px solid var(--red);border-radius:6px;color:var(--red);font:900 26px/1 var(--jp);transform:rotate(-4deg);background:color-mix(in srgb,var(--red) 6%,transparent)}
+.hanko.sm{width:20px;height:20px;border-width:1.5px;border-radius:3px;font-size:12px;margin-right:8px;vertical-align:-5px;transform:rotate(-4deg)}
+.tane{display:flex;gap:14px;align-items:center;margin:22px 0 0;font:500 12px/1.6 var(--mono);letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+.tane b{font-weight:500;color:var(--paper);text-transform:none}
+.tane b[lang=jv]{font:500 15px var(--jv)}
+.tane b[lang=ja]{font:500 13px var(--jps)}
+.tane small{font-size:10.5px;letter-spacing:.08em;text-transform:none;opacity:.85}
+@media (max-width:760px){.tane{margin-top:14px}.hanko{width:40px;height:40px;font-size:22px}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1257,8 +1272,8 @@ nav.topbar{background:rgba(244,241,236,.92);border-bottom:1px solid var(--ink-3)
 <section class="intro" id="tentang" data-pg="home">
   <i class="batik l" aria-hidden="true"></i><i class="batik r" aria-hidden="true"></i>
   <div class="wrap">
-    <div class="ab-l"><span class="salam"><b lang="jv">ꦱꦸꦒꦼꦁꦫꦮꦸꦃ</b>Sugeng rawuh · Welcome</span>
-    <h2>About Seeds<br>Studio<span class="dot">.</span></h2></div>
+    <div class="ab-l"><span class="salam"><b lang="jv">ꦱꦸꦒꦼꦁꦫꦮꦸꦃ</b><i lang="ja">ようこそ</i>Sugeng rawuh · Welcome</span>
+    <h2>About Seeds<br>Studio<span class="dot">.</span></h2><p class="tane"><span class="hanko" lang="ja" aria-hidden="true">種</span><span><b lang="jv">ꦮꦶꦗꦶ</b> wiji · <b lang="ja">種</b> tane<br><small>Javanese &amp; Japanese for “seed”</small></span></p></div>
     <div class="ab-r"><p>Seeds Studio is a digital visual studio creating illustration and VTuber work. Many creators have to hunt down separate artists for their model, artwork and stream assets, and the results often don't match. We are one team from Yogyakarta that handles all of it, with a consistent style and a clear process, and a little bit of Jogja in every piece.</p>
     <div class="ab-cta"><a class="btn red" href="#layanan">See services <span aria-hidden="true">→</span></a><a class="btn" href="#karya">Gallery</a></div></div>
   </div>
@@ -1269,7 +1284,7 @@ nav.topbar{background:rgba(244,241,236,.92);border-bottom:1px solid var(--ink-3)
 <section class="svc3" id="layanan" data-pg="layanan">
   <div class="wrap">
     <div class="sz-ban">
-      <div class="sz-ban-tx"><span class="sz-eye"><span class="tag">sample prices</span></span><h2>Services</h2><p>Live2D, illustration, backgrounds and stingers for creators and VTubers.</p><a class="btn red" href="#pesan">Order <span aria-hidden="true">→</span></a></div>
+      <div class="sz-ban-tx"><span class="sz-eye"><span class="tag">sample prices</span></span><span class="duo" aria-hidden="true"><b lang="jv">ꦭꦪꦤꦤ꧀</b><i lang="ja">サービス</i></span><h2>Services</h2><p>Live2D, illustration, backgrounds and stingers for creators and VTubers.</p><a class="btn red" href="#pesan">Order <span aria-hidden="true">→</span></a></div>
       <span class="sz-wm" aria-hidden="true">ꦮꦶꦗꦶ</span>
     </div>
     <div class="sz-tabs" id="sz-tabs" role="tablist" aria-label="Filter services"></div>
@@ -1280,7 +1295,7 @@ nav.topbar{background:rgba(244,241,236,.92);border-bottom:1px solid var(--ink-3)
 <section class="pf" id="karya" data-pg="karya">
   <div class="wrap">
     <div class="sec-head">
-      <div><h2>Gallery</h2><p>Selected works from the Seeds team, 2026.</p></div>
+      <div><span class="duo" aria-hidden="true"><b lang="jv">ꦒꦭꦺꦫꦶ</b><i lang="ja">ギャラリー</i></span><h2>Gallery</h2><p>Selected works from the Seeds team, 2026.</p></div>
           </div>
     <div class="gl-wrap">
       <div class="pv-tabs" id="pv-tabs" role="tablist" aria-label="Filter by category"></div>
@@ -1292,7 +1307,7 @@ nav.topbar{background:rgba(244,241,236,.92);border-bottom:1px solid var(--ink-3)
 
 
 <section class="team" id="tim" data-pg="tim">
-  <div class="wrap sec-head"><div><h2>Team Management</h2><p>The people behind every Seeds piece.</p></div><a class="btn red" href="#pesan">Work with us <span aria-hidden="true">→</span></a></div>
+  <div class="wrap sec-head"><div><span class="duo" aria-hidden="true"><b lang="jv">ꦠꦶꦩ꧀</b><i lang="ja">チーム</i></span><h2>Team Management</h2><p>The people behind every Seeds piece.</p></div><a class="btn red" href="#pesan">Work with us <span aria-hidden="true">→</span></a></div>
   <div class="wrap team-panel">
     <div class="team-row">
       <article class="tm"><span class="tm-no">01</span>
@@ -1340,7 +1355,7 @@ nav.topbar{background:rgba(244,241,236,.92);border-bottom:1px solid var(--ink-3)
 
 <section class="order" id="pesan" data-pg="pesan">
   <div class="wrap">
-    <div class="sec-head"><div><h2>How to Order</h2><p>Four simple steps. Ordering <b>needs no account</b>; accounts are only for <a href="#gacha">Seeds Gacha</a>.</p></div><a class="btn red" href="https://vgen.co" target="_blank" rel="noopener">Order on VGen <span aria-hidden="true">→</span></a></div>
+    <div class="sec-head"><div><span class="duo" aria-hidden="true"><b lang="jv">ꦥꦺꦱꦼꦤ꧀</b><i lang="ja">ご注文</i></span><h2>How to Order</h2><p>Four simple steps. Ordering <b>needs no account</b>; accounts are only for <a href="#gacha">Seeds Gacha</a>.</p></div><a class="btn red" href="https://vgen.co" target="_blank" rel="noopener">Order on VGen <span aria-hidden="true">→</span></a></div>
     <ol class="steps4">
       <li><strong>Send a brief</strong><span>DM us on X / Instagram or send a request on VGen.</span></li>
       <li><strong>Get a quote</strong><span>Pay a 50% deposit to secure your slot in the queue.</span></li>
@@ -1500,7 +1515,7 @@ nav.topbar{background:rgba(244,241,236,.92);border-bottom:1px solid var(--ink-3)
       <a class="ico" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
       <a class="ico" href="https://vgen.co" target="_blank" rel="noopener" aria-label="VGen"><svg><use href="#i-v"/></svg></a>
     </div>
-    <small>© 2026 Seeds Studio · Made in <b>Yogyakarta</b></small>
+    <small><span class="hanko sm" lang="ja" aria-hidden="true">種</span>© 2026 Seeds Studio · Made in <b>Yogyakarta</b></small>
   </div>
 </footer>
   <dialog class="pf-lb" id="pf-lb" aria-labelledby="pf-lb-t"><button type="button" class="pf-lb-x" id="pf-lb-x" aria-label="Close">×</button><img id="pf-lb-img" alt=""><div class="pf-lb-cap"><strong id="pf-lb-t"></strong><small id="pf-lb-m"></small></div></dialog>
