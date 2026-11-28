@@ -1097,6 +1097,20 @@ footer.fmini{padding-block:22px}
  .intro .ab-r p{font-size:14px}
  .ab-cta{margin-top:22px}.ab-cta .btn{padding:10px 18px;font-size:13px}
 }
+/* ===== LIGHT MODE PREVIEW ===== */
+:root{--ink:#f4f1ec;--ink-2:#ebe6df;--ink-3:#d9d3ca;--paper:#171616;--gray:#3b3939;--muted:#7b7675;color-scheme:light}
+nav.topbar{background:rgba(244,241,236,.92);border-bottom:1px solid var(--ink-3)}
+.topbar .navlinks a{color:var(--paper)}
+.topbar #navlogin:hover{background:var(--paper);color:#fff}
+@media (max-width:900px){.topbar .navlinks{background:var(--ink)!important;border-color:var(--ink-3)!important}}
+.burger span,.burger::before,.burger::after{background:var(--paper)}
+.pf-item.soon{background:repeating-linear-gradient(135deg,var(--ink-2) 0 14px,#e4ded6 14px 28px)}
+/* gacha + account pages stay a dark stage */
+#gacha,#masuk,#akun,#admin{--ink:#141514;--ink-2:#1b1c1b;--ink-3:#2a2b2a;--paper:#ececec;--gray:#d9d9d9;--muted:#8f908e;background:var(--ink);color:var(--paper);color-scheme:dark}
+.tb-burger span{background:var(--paper)}
+.navlinks .gl,.topbar .navlinks .gl{color:#c48a00}
+.pf-item:not(.soon) .pf-cap{color:#fff}.pf-item:not(.soon) .pf-cap small{color:rgba(255,255,255,.75)}
+.tm-art{color:#fff}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
