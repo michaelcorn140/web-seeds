@@ -1105,12 +1105,37 @@ nav.topbar{background:rgba(244,241,236,.92);border-bottom:1px solid var(--ink-3)
 @media (max-width:900px){.topbar .navlinks{background:var(--ink)!important;border-color:var(--ink-3)!important}}
 .burger span,.burger::before,.burger::after{background:var(--paper)}
 .pf-item.soon{background:repeating-linear-gradient(135deg,var(--ink-2) 0 14px,#e4ded6 14px 28px)}
-/* gacha + account pages stay a dark stage */
-#gacha,#masuk,#akun,#admin{--ink:#141514;--ink-2:#1b1c1b;--ink-3:#2a2b2a;--paper:#ececec;--gray:#d9d9d9;--muted:#8f908e;background:var(--ink);color:var(--paper);color-scheme:dark}
 .tb-burger span{background:var(--paper)}
 .navlinks .gl,.topbar .navlinks .gl{color:#c48a00}
 .pf-item:not(.soon) .pf-cap{color:#fff}.pf-item:not(.soon) .pf-cap small{color:rgba(255,255,255,.75)}
 .tm-art{color:#fff}
+/* light: gacha + account pages, clean cards */
+:root{--card:#fff;--line:#e4ded5;--shadow:0 1px 2px rgba(30,20,15,.04),0 10px 30px -12px rgba(30,20,15,.12)}
+.gacha{background:var(--ink)}
+.g-bg img{opacity:.08}
+.g-bg::after{background:radial-gradient(ellipse 70% 60% at 50% 42%,transparent,var(--ink) 78%),linear-gradient(180deg,transparent 60%,var(--ink))}
+.g-dim{background:radial-gradient(circle at 50% 45%,rgba(244,241,236,0),rgba(30,20,15,.25))}
+.stage::before{background:repeating-conic-gradient(from 0deg,rgba(255,59,60,.07) 0 5deg,transparent 5deg 15deg)}
+.st-fx .halo{background:radial-gradient(circle,rgba(255,59,60,.22),rgba(255,59,60,.05) 55%,transparent 70%)}
+.acct,.g-side .acct,.ak-card,.ak-hero,.adm-wrap,.steps4 li{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:none}
+.acct{border-radius:14px;padding:20px}
+.ak-chips div{background:var(--card);border:1px solid var(--line);backdrop-filter:none}
+.ak-av,.me .badge-av,.avs label{background:var(--ink)}
+.acct input[type=text],.acct input[type=email],.acct input[type=password]{background:var(--ink);border-color:var(--line);color:var(--paper)}
+.tabs{background:var(--ink);border-color:var(--line)}
+.tabs button[aria-selected="true"]{background:var(--paper);color:#fff}
+.avs input:checked + label{border-color:var(--red)}
+.lg-art{border:0;box-shadow:var(--shadow)}
+.lg-copy,.lg-copy h2{color:#fff}.lg-copy ul{color:rgba(255,255,255,.82)}
+.lg-box{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+.mb-dlg{background:var(--card);color:var(--paper);border-color:var(--line)}
+.mb-dlg::backdrop{background:rgba(30,20,15,.45)}
+.btn:not(.red){border-color:var(--paper);color:var(--paper)}
+.btn:not(.red):hover{background:var(--paper);color:#fff}
+.proto{border-top-color:var(--line)}
+.pz-row > div > :not(.card-f){filter:brightness(.7) saturate(1.2)}
+.card-f,.tcg-wrap,.pack{--ink:#141514;--ink-2:#1b1c1b;--ink-3:#2a2b2a;--paper:#ececec;--gray:#d9d9d9;--muted:#8f908e}
+.g-head p b,.order a[href="#gacha"],p a[href="#gacha"]{color:#c48a00}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
