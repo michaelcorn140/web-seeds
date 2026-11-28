@@ -1059,6 +1059,9 @@ nav.topbar{view-transition-name:topbar}
 .btn{transition:background .25s,color .25s,transform .25s var(--ease),box-shadow .25s}
 .btn:hover{transform:translateY(-2px)}
 .btn:active{transform:translateY(0) scale(.97)}
+/* About is now the first block on Home */
+.intro{padding-block:clamp(72px,11vw,140px) clamp(64px,9vw,110px)}
+.intro .orn h2{font-size:clamp(30px,4vw,52px)}
 @media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),.pg-in{animation:none}.rv{opacity:1;transform:none;transition:none}}
 </style>
 
@@ -1097,24 +1100,14 @@ nav.topbar{view-transition-name:topbar}
 
 
 
-<section class="promo" id="top" data-pg="home" aria-label="Highlights" aria-roledescription="carousel">
-  <div class="wrap">
-    <div class="promo-track" id="promo">
-      <!-- add more banners: copy one <a class="promo-slide">, change href/src/alt -->
-      <a class="promo-slide" href="#masuk"><img src="banner-gacha.jpg" alt="Gacha your card. Make an account and get 1 free gacha, then start your commission. Register account." width="3120" height="1755"></a>
-      <button type="button" class="promo-arr prev" aria-label="Previous banner">‹</button>
-      <button type="button" class="promo-arr next" aria-label="Next banner">›</button>
-    </div>
-    <div class="promo-dots" id="promoDots" role="tablist" aria-label="Choose banner"></div>
-  </div>
-</section>
 
 
-<section class="intro" id="tentang" data-pg="home">
+
+<section class="intro" id="tentang" data-pg="home"><span id="top"></span>
   <i class="batik l" aria-hidden="true"></i><i class="batik r" aria-hidden="true"></i>
   <div class="wrap">
     <span class="salam"><b lang="jv">ꦱꦸꦒꦼꦁꦫꦮꦸꦃ</b>Sugeng rawuh · Welcome</span>
-    <div class="orn"><i></i><h2>About</h2><i></i></div>
+    <div class="orn"><i></i><h2>About Seeds Studio</h2><i></i></div>
     <p>Seeds Studio is a digital visual studio creating illustration and VTuber work. Many creators have to hunt down separate artists for their model, artwork and stream assets, and the results often don't match. We are one team from Yogyakarta that handles all of it, with a consistent style and a clear process, and a little bit of Jogja in every piece.</p>
   </div>
 </section>
