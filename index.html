@@ -1083,6 +1083,20 @@ footer.fmini{padding-block:22px}
 .fmini small{font-size:12px;color:var(--muted)}
 .fmini small b{color:var(--red);font-weight:600}
 @media (max-width:600px){footer.fmini{padding-block:18px}.fmini .wrap{flex-direction:column;gap:8px}}
+/* About: two-column, left aligned */
+.intro{text-align:left;padding-block:clamp(56px,7vw,96px);min-height:calc(100svh - 64px - clamp(240px,38vw,520px) - 74px)}
+.intro .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(28px,5vw,80px);align-items:start}
+.intro .salam{margin-bottom:16px}
+.intro h2{margin:0;font-size:clamp(34px,4.6vw,64px);line-height:.98;letter-spacing:-.03em}
+.intro .ab-r p{margin:0;max-width:56ch;font-size:clamp(15px,1.25vw,18px);line-height:1.7}
+.ab-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+@media (max-width:760px){
+ .intro{min-height:0;padding-block:40px 48px}
+ .intro .wrap{grid-template-columns:1fr;gap:18px}
+ .intro h2{font-size:32px}
+ .intro .ab-r p{font-size:14px}
+ .ab-cta{margin-top:22px}.ab-cta .btn{padding:10px 18px;font-size:13px}
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1124,9 +1138,10 @@ footer.fmini{padding-block:22px}
 <section class="intro" id="tentang" data-pg="home">
   <i class="batik l" aria-hidden="true"></i><i class="batik r" aria-hidden="true"></i>
   <div class="wrap">
-    <span class="salam"><b lang="jv">ꦱꦸꦒꦼꦁꦫꦮꦸꦃ</b>Sugeng rawuh · Welcome</span>
-    <div class="orn"><i></i><h2>About Seeds Studio</h2><i></i></div>
-    <p>Seeds Studio is a digital visual studio creating illustration and VTuber work. Many creators have to hunt down separate artists for their model, artwork and stream assets, and the results often don't match. We are one team from Yogyakarta that handles all of it, with a consistent style and a clear process, and a little bit of Jogja in every piece.</p>
+    <div class="ab-l"><span class="salam"><b lang="jv">ꦱꦸꦒꦼꦁꦫꦮꦸꦃ</b>Sugeng rawuh · Welcome</span>
+    <h2>About Seeds<br>Studio<span class="dot">.</span></h2></div>
+    <div class="ab-r"><p>Seeds Studio is a digital visual studio creating illustration and VTuber work. Many creators have to hunt down separate artists for their model, artwork and stream assets, and the results often don't match. We are one team from Yogyakarta that handles all of it, with a consistent style and a clear process, and a little bit of Jogja in every piece.</p>
+    <div class="ab-cta"><a class="btn red" href="#layanan">See services <span aria-hidden="true">→</span></a><a class="btn" href="#karya">Portfolio</a></div></div>
   </div>
 </section>
 
