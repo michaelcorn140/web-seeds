@@ -1029,29 +1029,6 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
 :root{--xh:"Anton","Impact","Arial Narrow",sans-serif;--xb:"Open Sauce Sans","Helvetica Neue",Arial,sans-serif;--xred:#ff3b3c;--xg:#6b6b6b}
 body::after{display:none}
 html{scroll-padding-top:64px}
-/* header */
-nav.topbar{background:#000;backdrop-filter:none;border-bottom:0}
-.tb{grid-template-columns:1fr auto 1fr;height:64px;padding:0 clamp(16px,4vw,56px)}
-.tb-burger{grid-column:1;justify-self:start}
-.topbar .navlinks{grid-column:1;justify-self:start;gap:clamp(16px,2vw,30px);font:400 15px/1 var(--xh);letter-spacing:.04em}
-.topbar .navlinks a{color:#fff}
-.topbar .navlinks a:hover,.topbar .navlinks a[aria-current]{color:#fff;opacity:.6}
-.topbar .navlinks a[aria-current]::after{display:none}
-.topbar .xlogo{grid-column:2;justify-self:center}
-.xlogo{display:inline-block;background:var(--xred);color:#fff;text-decoration:none;font:400 22px/1 var(--xh);letter-spacing:.08em;padding:8px 14px 7px}
-.xlogo:hover{opacity:.9}
-.topbar .navr{grid-column:3;justify-self:end;display:flex;align-items:center;gap:2px}
-.topbar .ico{color:#fff}
-.topbar #navlogin{margin-left:12px;padding:11px 24px;font:400 14px/1 var(--xh);letter-spacing:.06em;text-transform:uppercase;background:var(--xred);color:#fff;border-radius:999px}
-.topbar #navlogin:hover{background:#fff;color:#000}
-@media (max-width:1100px){
-  .tb{grid-template-columns:1fr auto 1fr}
-  .tb-burger{display:flex}
-  .tb-burger span{background:#fff}
-  .topbar .navlinks{grid-column:1/-1;font-size:20px;background:#000}
-  .topbar .navlinks a{padding:14px 0;border-bottom:1px solid #1a1a1a}
-}
-@media (max-width:560px){.topbar .ico{display:none}.topbar #navlogin{margin-left:0;padding:9px 16px;font-size:13px}.xlogo{font-size:19px;padding:7px 11px 6px}}
 /* page */
 #home{background:#fff;color:#0b0b0b;font:15px/1.6 var(--xb)}
 #home h1,#home h2,#home h3{font-family:var(--xh);font-weight:400;text-transform:uppercase;letter-spacing:.005em;line-height:.95;margin:0}
@@ -1140,6 +1117,29 @@ nav.topbar{background:#000;backdrop-filter:none;border-bottom:0}
 .xfoot small{color:#8a8a8a}
 .xfoot .legal{color:#8a8a8a;font-size:12px;border-top:1px solid #1a1a1a}
 .xfoot .jogja b{color:#fff;font-weight:600}
+/* dark Seeds identity */
+#home{background:var(--ink);color:var(--paper)}
+.xhero{background:var(--ink)}
+.xdark{background:#0b0c0b}
+.xhead p,.xhero p,.xsv-c p,.xsv-c small,.xt-r,.xsteps span{color:var(--muted)}
+.xdark .xhead p{color:var(--muted)}
+.xbtn:hover,.xdark .xbtn:hover{background:var(--paper);color:#0b0b0b}
+.xeye b{font:500 15px var(--jv);letter-spacing:0;text-transform:none;margin-right:10px}
+.xone{font:600 11px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.xsv-img{background:#0b0c0b}
+.xabout{color:var(--gray)}
+.xteam,.xteam li{border-color:#262726}
+.xt-s a{color:var(--paper)}
+.xsteps li{border-top-color:var(--paper)}
+.xsoc a{border-color:#333;color:var(--paper)}
+.xgacha{background:#0b0c0b;border-top:1px solid #1d1e1d;border-bottom:1px solid #1d1e1d;padding:clamp(40px,5vw,64px) 0}
+.xgacha .xwrap{display:flex;align-items:center;gap:clamp(20px,3vw,40px)}
+.xg-frogs{display:flex;gap:6px;flex:none}
+.xg-frogs .frog{height:clamp(40px,4vw,56px)}
+.xg-tx{flex:1}
+.xg-tx h2{font-size:clamp(34px,4vw,56px)}
+.xg-tx p{margin:6px 0 0;color:var(--muted)}
+@media (max-width:700px){.xgacha .xwrap{flex-direction:column;align-items:flex-start}}
 /* responsive */
 @media (max-width:1000px){
   .xsv{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -1173,15 +1173,15 @@ nav.topbar{background:#000;backdrop-filter:none;border-bottom:0}
 
 <nav class="topbar">
   <div class="tb">
-    <button type="button" class="tb-burger" id="tbBurger" aria-label="Menu" aria-expanded="false" aria-controls="tbMenu"><span></span><span></span></button>
-    <div class="navlinks" id="tbMenu"><a href="#layanan">Services</a><a href="#karya">Portfolio</a><a href="#tim">Team</a><a href="#pesan">How to Order</a><a href="#gacha">Gacha</a></div>
-    <a class="xlogo" href="#top" aria-label="Seeds Studio home">SEEDS</a>
+    <a class="navlogo" href="#top" aria-label="Seeds Studio home"><i class="frog" aria-hidden="true"></i><span>Seeds<br>Studio.</span></a>
+    <div class="navlinks" id="tbMenu"><a href="#layanan">Services</a><a href="#karya">Portfolio</a><a href="#tim">Team</a><a href="#pesan">How to order</a><a href="#gacha" class="gl">Gacha ✦</a></div>
     <div class="navr">
       <a class="ico" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
       <a class="ico" href="https://x.com" target="_blank" rel="noopener" aria-label="X"><svg><use href="#i-x"/></svg></a>
       <a class="ico" href="https://vgen.co" target="_blank" rel="noopener" aria-label="VGen"><svg><use href="#i-v"/></svg></a>
+      <span class="tb-div" aria-hidden="true"></span>
       <div class="umenu" id="umenu">
-        <a class="btn red" href="#masuk" id="navlogin">Sign In</a>
+        <a class="btn red" href="#masuk" id="navlogin">Sign in</a>
         <button type="button" class="ubtn" id="ubtn" aria-haspopup="true" aria-expanded="false" aria-controls="udrop" hidden><span class="uav"><i class="av" id="uav"></i></span><span class="unick" id="unick">Account</span><span aria-hidden="true">▾</span></button>
         <div class="udrop" id="udrop" role="menu" hidden>
           <div class="uhead" id="uhead"></div>
@@ -1191,6 +1191,7 @@ nav.topbar{background:#000;backdrop-filter:none;border-bottom:0}
           <button type="button" id="ulogout" role="menuitem">Sign out</button>
         </div>
       </div>
+      <button type="button" class="tb-burger" id="tbBurger" aria-label="Menu" aria-expanded="false" aria-controls="tbMenu"><span></span><span></span></button>
     </div>
   </div>
 </nav>
@@ -1199,12 +1200,21 @@ nav.topbar{background:#000;backdrop-filter:none;border-bottom:0}
 
 <section class="xhero" id="top">
   <div class="xhero-tx">
-    <span class="xeye">Seeds Studio · Yogyakarta, Indonesia</span>
+    <span class="xeye"><b lang="jv">ꦱꦸꦒꦼꦁꦫꦮꦸꦃ</b>Sugeng rawuh · Yogyakarta</span>
     <h1>Anime &amp; VTuber art studio</h1>
     <p>Live2D models, illustration, backgrounds and stingers from one team, with a consistent style and a clear process.</p>
     <a class="xbtn" href="#pesan">Start an order</a>
+    <span class="xone">One team · One style · One timeline</span>
   </div>
   <div class="xhero-art"><img src="featured.jpg" alt="Midnight Ramen: a girl eating ramen at a night street stall" fetchpriority="high"></div>
+</section>
+
+<section class="xgacha" aria-label="Seeds Gacha">
+  <div class="xwrap">
+    <div class="xg-frogs" aria-hidden="true"><i class="frog" style="--c:var(--red)"></i><i class="frog" style="--c:#cfd0ce"></i><i class="frog" style="--c:var(--gold)"></i><i class="frog" style="--c:#62c370"></i></div>
+    <div class="xg-tx"><h2>Seeds Gacha</h2><p>Create an account and get 1 free pull.</p></div>
+    <a class="xbtn" href="#gacha">Open your pack</a>
+  </div>
 </section>
 
 <section class="xsec" id="layanan">
@@ -1235,7 +1245,7 @@ nav.topbar{background:#000;backdrop-filter:none;border-bottom:0}
   </div>
 </section>
 
-<section class="xsec xline" id="pesan">
+<section class="xsec xdark" id="pesan">
   <div class="xwrap">
     <div class="xhead"><div><h2>How to Order</h2><p>Four simple steps. Ordering needs no account; accounts are only for <a href="#gacha">Seeds Gacha</a>.</p></div><a class="xbtn" href="https://vgen.co" target="_blank" rel="noopener">Order on VGen</a></div>
     <ol class="xsteps">
@@ -1247,11 +1257,10 @@ nav.topbar{background:#000;backdrop-filter:none;border-bottom:0}
   </div>
 </section>
 
-<section class="xsec xdark xcomm">
+<section class="xsec xcomm">
   <div class="xwrap">
     <h2>Join the Seeds crew</h2>
-    <p>Follow us for slot openings, WIPs and giveaways. New: create an account and get 1 free Seeds Gacha pull.</p>
-    <a class="xbtn" href="#masuk">Create an account</a>
+    <p>Follow us for slot openings, WIPs and giveaways.</p>
     <div class="xsoc">
       <a href="https://x.com" target="_blank" rel="noopener" aria-label="X"><svg><use href="#i-x"/></svg></a>
       <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
@@ -1405,11 +1414,12 @@ nav.topbar{background:#000;backdrop-filter:none;border-bottom:0}
   </div>
 </main>
 
-<footer class="xfoot">
+<div class="kawung" aria-hidden="true"></div>
+<footer>
   <div class="wrap">
     <div class="fgrid">
-      <a class="xlogo" href="#top" aria-label="Seeds Studio home">SEEDS</a>
-      <ul><li><a href="#layanan">Services</a></li><li><a href="#karya">Portfolio</a></li><li><a href="#tim">Team</a></li><li><a href="#pesan">How to Order</a></li><li><a href="#gacha">Gacha</a></li></ul>
+      <a class="navlogo" href="#top"><i class="frog" aria-hidden="true"></i><span>Seeds<br>Studio.</span></a>
+      <ul><li><a href="#top">Home</a></li><li><a href="#layanan">Services</a></li><li><a href="#karya">Portfolio</a></li></ul>
       <ul><li><a href="https://vgen.co" target="_blank" rel="noopener">VGen</a></li><li><a href="https://x.com" target="_blank" rel="noopener">X</a></li><li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li></ul>
       <div class="fcta"><small>Ready to commission?</small><a class="btn red" href="#pesan" style="justify-self:start">Start an order</a><small>Social links are placeholders.</small></div>
     </div>
