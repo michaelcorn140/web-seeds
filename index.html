@@ -986,6 +986,7 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
 .hero{height:calc(100vh - 64px);height:calc(100svh - 64px)}
 .gacha{padding-top:24px}
 .akun,.login,.adminpage{padding-top:40px}
+[data-pg]:not([data-pg="home"]){min-height:calc(100svh - 64px - 160px)}
 @media (max-width:1100px){
   .tb-burger{display:flex}
   .tb{grid-template-columns:1fr auto}
@@ -1024,145 +1025,6 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
 .promo .wrap{max-width:none;padding:0;position:relative}
 .promo-track{border:0;border-radius:0;box-shadow:none}
 .promo-dots{position:absolute;left:0;right:0;bottom:clamp(10px,2vw,22px);margin:0;z-index:3}
-/* ================= v2 layout: white sections + black bands (azuki-inspired) ================= */
-@font-face{font-family:'Anton';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/anton-latin-400-normal.woff2) format('woff2')}
-:root{--xh:"Anton","Impact","Arial Narrow",sans-serif;--xb:"Open Sauce Sans","Helvetica Neue",Arial,sans-serif;--xred:#ff3b3c;--xg:#6b6b6b}
-body::after{display:none}
-html{scroll-padding-top:64px}
-/* page */
-#home{background:#fff;color:#0b0b0b;font:15px/1.6 var(--xb)}
-#home h1,#home h2,#home h3{font-family:var(--xh);font-weight:400;text-transform:uppercase;letter-spacing:.005em;line-height:.95;margin:0}
-.xwrap{max-width:1240px;margin:0 auto;padding:0 clamp(20px,6vw,96px)}
-.xsec{padding:clamp(72px,10vw,140px) 0}
-.xdark{background:#000;color:#fff}
-.xline{border-top:1px solid #e6e6e6}
-.xhead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:clamp(36px,5vw,64px)}
-.xhead h2{font-size:clamp(44px,6vw,80px)}
-.xhead p{margin:12px 0 0;color:var(--xg);font-size:15px;max-width:52ch}
-.xdark .xhead p{color:#9a9a9a}
-.xhead a:not(.xbtn){color:inherit}
-.xbtn{display:inline-flex;align-items:center;justify-content:center;flex:none;background:var(--xred);color:#fff;text-decoration:none;font:400 15px/1 var(--xh);letter-spacing:.06em;text-transform:uppercase;padding:17px 34px;border-radius:999px;transition:background .2s,color .2s}
-.xbtn:hover{background:#000;color:#fff}
-.xdark .xbtn:hover{background:#fff;color:#000}
-/* hero */
-.xhero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);align-items:stretch;min-height:calc(100svh - 64px);background:#fff}
-.xhero-tx{align-self:center;display:grid;gap:22px;justify-items:start;padding:56px clamp(20px,4vw,64px) 56px clamp(20px,6vw,96px)}
-.xeye{color:var(--xred);font:600 12px var(--xb);letter-spacing:.14em;text-transform:uppercase}
-.xhero h1{font-size:clamp(52px,5.4vw,96px)!important;line-height:.9!important}
-.xhero p{margin:0;color:var(--xg);font-size:16px;max-width:36ch}
-.xhero-art{position:relative;overflow:hidden;background:#000}
-.xhero-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%}
-/* services */
-.xsv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(40px,5vw,64px) clamp(16px,2.4vw,32px)}
-.xsv-c{display:grid;gap:8px;align-content:start}
-.xsv-img{aspect-ratio:4/3;background:#000;overflow:hidden;margin-bottom:12px;position:relative;display:grid;place-items:center}
-.xsv-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
-.xsv-c:hover .xsv-img img{transform:scale(1.04)}
-.xsv-img .frog{width:22%;--c:var(--xred)}
-.xsv-img em{position:absolute;left:14px;bottom:12px;color:#8a8a8a;font:600 11px var(--xb);font-style:normal;letter-spacing:.12em;text-transform:uppercase}
-.xsv-c small{color:var(--xg);font:600 11px var(--xb);letter-spacing:.14em;text-transform:uppercase}
-.xsv-row{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
-.xsv-row h3{font-size:clamp(22px,2vw,28px)}
-.xsv-row b{flex:none;font:600 14px var(--xb);white-space:nowrap}
-.xsv-c p{margin:0;color:var(--xg);font-size:14px;line-height:1.5}
-/* portfolio */
-.xpf-feat,.xpf-row button{all:unset;cursor:zoom-in;display:grid;gap:12px;box-sizing:border-box}
-.xpf-feat img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
-.xpf-feat,.xpf-row button{width:100%}
-.xpf-feat span,.xpf-row span{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
-.xpf-feat strong,.xpf-row strong{font:400 clamp(20px,2vw,26px)/1 var(--xh);text-transform:uppercase}
-.xpf-feat small,.xpf-row small{color:#9a9a9a;font-size:13px}
-.xpf-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,32px);margin-top:clamp(36px,5vw,56px)}
-.xpf-row img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
-.xpf-feat img,.xpf-row img{transition:opacity .3s}
-.xpf-feat:hover img,.xpf-row button:hover img{opacity:.85}
-.xpf-feat:focus-visible,.xpf-row button:focus-visible{outline:2px solid var(--xred);outline-offset:4px}
-.xnote{margin:clamp(28px,4vw,44px) 0 0;color:#9a9a9a;font-size:14px}
-/* team */
-.xabout{margin:0 0 clamp(36px,5vw,56px);max-width:68ch;font-size:16px;color:#2a2a2a}
-.xteam{list-style:none;margin:0;padding:0;border-top:1px solid #e6e6e6}
-.xteam li{display:grid;grid-template-columns:40px 48px minmax(0,1fr) minmax(0,1.6fr) auto;align-items:center;gap:20px;padding:16px 0;border-bottom:1px solid #e6e6e6}
-.xt-no{font:400 15px var(--xh);color:#b0b0b0}
-.xt-av{width:48px;height:48px;border-radius:50%;overflow:hidden;background:#000;display:grid;place-items:center}
-.xt-av img{width:100%;height:100%;object-fit:cover}
-.xt-av .frog{height:30px;--c:var(--xred)}
-.xt-n{font:400 24px/1 var(--xh);text-transform:uppercase}
-.xt-r{color:var(--xg);font-size:14px}
-.xt-s a{display:inline-flex;align-items:center;gap:6px;color:#0b0b0b;text-decoration:none;font-size:13px}
-.xt-s svg{width:15px;height:15px;fill:currentColor}
-.xt-s a:hover{color:var(--xred)}
-/* how to order */
-.xsteps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(20px,3vw,40px);counter-reset:s}
-.xsteps li{counter-increment:s;display:grid;gap:10px;align-content:start;border-top:2px solid #0b0b0b;padding-top:20px}
-.xsteps li::before{content:"0" counter(s);font:400 15px var(--xh);color:var(--xred)}
-.xsteps strong{font:400 26px/1 var(--xh);text-transform:uppercase}
-.xsteps span{color:var(--xg);font-size:14px}
-/* community */
-.xcomm{text-align:center}
-.xcomm .xwrap{display:grid;justify-items:center;gap:22px}
-.xcomm h2{font-size:clamp(48px,7vw,96px)}
-.xcomm p{margin:0;color:#9a9a9a;max-width:46ch}
-.xsoc{display:flex;gap:8px}
-.xsoc a{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:#fff;border:1px solid #333}
-.xsoc a:hover{border-color:#fff}
-.xsoc svg{width:16px;height:16px;fill:currentColor}
-/* footer */
-.xfoot{background:#000;color:#fff;border-top:1px solid #1a1a1a;padding:clamp(48px,6vw,72px) 0 28px}
-.xfoot .fgrid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1.3fr;gap:32px;align-items:start}
-@media (max-width:820px){.xfoot .fgrid{grid-template-columns:1fr 1fr}.xfoot .fgrid>.xlogo,.xfoot .fcta{grid-column:1/-1}}
-.xfoot .xlogo{justify-self:start}
-.xfoot ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:14px}
-.xfoot a{color:#fff;text-decoration:none}.xfoot a:hover{opacity:.6}
-.xfoot .fcta .btn{background:var(--xred);border:0;color:#fff;border-radius:999px;font:400 14px/1 var(--xh);letter-spacing:.06em;padding:15px 28px}
-.xfoot small{color:#8a8a8a}
-.xfoot .legal{color:#8a8a8a;font-size:12px;border-top:1px solid #1a1a1a}
-.xfoot .jogja b{color:#fff;font-weight:600}
-/* dark Seeds identity */
-#home{background:var(--ink);color:var(--paper)}
-.xhero{background:var(--ink)}
-.xdark{background:#0b0c0b}
-.xhead p,.xhero p,.xsv-c p,.xsv-c small,.xt-r,.xsteps span{color:var(--muted)}
-.xdark .xhead p{color:var(--muted)}
-.xbtn:hover,.xdark .xbtn:hover{background:var(--paper);color:#0b0b0b}
-.xeye b{font:500 15px var(--jv);letter-spacing:0;text-transform:none;margin-right:10px}
-.xone{font:600 11px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.xsv-img{background:#0b0c0b}
-.xabout{color:var(--gray)}
-.xteam,.xteam li{border-color:#262726}
-.xt-s a{color:var(--paper)}
-.xsteps li{border-top-color:var(--paper)}
-.xsoc a{border-color:#333;color:var(--paper)}
-.xgacha{background:#0b0c0b;border-top:1px solid #1d1e1d;border-bottom:1px solid #1d1e1d;padding:clamp(40px,5vw,64px) 0}
-.xgacha .xwrap{display:flex;align-items:center;gap:clamp(20px,3vw,40px)}
-.xg-frogs{display:flex;gap:6px;flex:none}
-.xg-frogs .frog{height:clamp(40px,4vw,56px)}
-.xg-tx{flex:1}
-.xg-tx h2{font-size:clamp(34px,4vw,56px)}
-.xg-tx p{margin:6px 0 0;color:var(--muted)}
-@media (max-width:700px){.xgacha .xwrap{flex-direction:column;align-items:flex-start}}
-/* responsive */
-@media (max-width:1000px){
-  .xsv{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .xsteps{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .xteam li{grid-template-columns:32px 44px minmax(0,1fr) auto;row-gap:2px}
-  .xt-r{grid-column:3/4;grid-row:2}.xt-av{grid-row:1/3}.xt-no{grid-row:1/3}.xt-s{grid-column:4;grid-row:1/3}
-}
-@media (max-width:820px){
-  .xhero{grid-template-columns:1fr;min-height:0}
-  .xhero-tx{padding:48px 20px 40px}
-  .xhero-art{aspect-ratio:4/3}
-  .xhead{flex-direction:column;align-items:flex-start}
-}
-@media (max-width:600px){
-  .xsv{grid-template-columns:1fr}
-  .xpf-row{grid-template-columns:1fr 1fr}
-  .xpf-row button:last-child{grid-column:1/-1}.xpf-row button:last-child img{aspect-ratio:16/9}
-  .xsteps{grid-template-columns:1fr}
-  .xpf-feat span,.xpf-row span{flex-direction:column;gap:4px}
-  .xteam li{grid-template-columns:44px minmax(0,1fr) auto;gap:4px 14px}
-  .xt-no{display:none}.xt-av{grid-column:1}.xt-n{grid-column:2;font-size:20px}.xt-r{grid-column:2;font-size:13px}.xt-s{grid-column:3}
-  .xt-s a{font-size:0;gap:0}.xt-s svg{width:18px;height:18px}
-}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1198,57 +1060,127 @@ html{scroll-padding-top:64px}
 
 <div id="home">
 
-<section class="xhero" id="top">
-  <div class="xhero-tx">
-    <span class="xeye"><b lang="jv">ꦱꦸꦒꦼꦁꦫꦮꦸꦃ</b>Sugeng rawuh · Yogyakarta</span>
-    <h1>Anime &amp; VTuber art studio</h1>
-    <p>Live2D models, illustration, backgrounds and stingers from one team, with a consistent style and a clear process.</p>
-    <a class="xbtn" href="#pesan">Start an order</a>
-    <span class="xone">One team · One style · One timeline</span>
-  </div>
-  <div class="xhero-art"><img src="featured.jpg" alt="Midnight Ramen: a girl eating ramen at a night street stall" fetchpriority="high"></div>
-</section>
 
-<section class="xgacha" aria-label="Seeds Gacha">
-  <div class="xwrap">
-    <div class="xg-frogs" aria-hidden="true"><i class="frog" style="--c:var(--red)"></i><i class="frog" style="--c:#cfd0ce"></i><i class="frog" style="--c:var(--gold)"></i><i class="frog" style="--c:#62c370"></i></div>
-    <div class="xg-tx"><h2>Seeds Gacha</h2><p>Create an account and get 1 free pull.</p></div>
-    <a class="xbtn" href="#gacha">Open your pack</a>
-  </div>
-</section>
 
-<section class="xsec" id="layanan">
-  <div class="xwrap">
-    <div class="xhead"><div><h2>Services</h2><p>Four core commissions for creators and VTubers. Sample prices.</p></div><a class="xbtn" href="#pesan">Start an order</a></div>
-    <div class="xsv" id="xsv"></div>
-  </div>
-</section>
-
-<section class="xsec xdark" id="karya">
-  <div class="xwrap">
-    <div class="xhead"><div><h2>Portfolio</h2><p>Selected works from the Seeds team, 2026.</p></div></div>
-    <button type="button" class="xpf-feat" data-src="featured.jpg" data-title="Midnight Ramen" data-meta="Illustration + Background · 2026"><img src="featured.jpg" alt="Midnight Ramen illustration" loading="lazy"><span><strong>Midnight Ramen</strong><small>Illustration + Background · 2026</small></span></button>
-    <div class="xpf-row">
-      <button type="button" data-src="girl.jpg" data-title="Ramen Girl" data-meta="Anime Illust · detail"><img src="girl.jpg" alt="Detail of the girl eating ramen" loading="lazy"><span><strong>Ramen Girl</strong><small>Anime Illust · detail</small></span></button>
-      <button type="button" data-src="hand.jpg" data-title="The Seed" data-meta="Anime Illust"><img src="hand.jpg" alt="Illustration of a hand holding a red seed" loading="lazy"><span><strong>The Seed</strong><small>Anime Illust</small></span></button>
-      <button type="button" data-src="street.jpg" data-title="Night Street" data-meta="Background · detail"><img src="street.jpg" alt="Night city street background" loading="lazy"><span><strong>Night Street</strong><small>Background · detail</small></span></button>
+<section class="promo" id="top" data-pg="home" aria-label="Highlights" aria-roledescription="carousel">
+  <div class="wrap">
+    <div class="promo-track" id="promo">
+      <!-- add more banners: copy one <a class="promo-slide">, change href/src/alt -->
+      <a class="promo-slide" href="#masuk"><img src="banner-gacha.jpg" alt="Gacha your card. Make an account and get 1 free gacha, then start your commission. Register account." width="3120" height="1755"></a>
+      <button type="button" class="promo-arr prev" aria-label="Previous banner">‹</button>
+      <button type="button" class="promo-arr next" aria-label="Next banner">›</button>
     </div>
-    <p class="xnote">Live2D and stinger samples coming soon.</p>
+    <div class="promo-dots" id="promoDots" role="tablist" aria-label="Choose banner"></div>
   </div>
 </section>
 
-<section class="xsec" id="tim">
-  <div class="xwrap">
-    <div class="xhead"><div><h2>Team</h2><p>The people behind every Seeds piece.</p></div><a class="xbtn" href="#pesan">Work with us</a></div>
-    <p class="xabout">Seeds Studio is a digital visual studio creating illustration and VTuber work. Many creators have to hunt down separate artists for their model, artwork and stream assets, and the results often don't match. We are one team from Yogyakarta that handles all of it, with a consistent style and a clear process, and a little bit of Jogja in every piece.</p>
-    <ul class="xteam"><li><span class="xt-no">01</span><span class="xt-av"><i class="frog" aria-hidden="true"></i></span><span class="xt-n">Michael</span><span class="xt-r">Founder &amp; Art Director, Designer</span><span class="xt-s"></span></li><li><span class="xt-no">02</span><span class="xt-av"><i class="frog" aria-hidden="true"></i></span><span class="xt-n">Imoo</span><span class="xt-r">VTuber Artist, Illustration Artist</span><span class="xt-s"></span></li><li><span class="xt-no">03</span><span class="xt-av"><i class="frog" aria-hidden="true"></i></span><span class="xt-n">Zuno</span><span class="xt-r">Rigger, Animator</span><span class="xt-s"></span></li><li><span class="xt-no">04</span><span class="xt-av"><img src="nel.jpg" alt="" style="object-position:50% 30%"></span><span class="xt-n">Nel</span><span class="xt-r">Anime Illustration Artist</span><span class="xt-s"></span></li><li><span class="xt-no">05</span><span class="xt-av"><img src="defran.jpg" alt=""></span><span class="xt-n">Defran</span><span class="xt-r">Anime Illustration &amp; Background Artist</span><span class="xt-s"><a href="https://www.instagram.com/dfanz__/" target="_blank" rel="noopener" aria-label="Instagram Defran (@dfanz__)"><svg><use href="#i-ig"/></svg>@dfanz__</a></span></li></ul>
+
+<section class="intro" id="tentang" data-pg="home">
+  <i class="batik l" aria-hidden="true"></i><i class="batik r" aria-hidden="true"></i>
+  <div class="wrap">
+    <span class="salam"><b lang="jv">ꦱꦸꦒꦼꦁꦫꦮꦸꦃ</b>Sugeng rawuh · Welcome</span>
+    <div class="orn"><i></i><h2>About</h2><i></i></div>
+    <p>Seeds Studio is a digital visual studio creating illustration and VTuber work. Many creators have to hunt down separate artists for their model, artwork and stream assets, and the results often don't match. We are one team from Yogyakarta that handles all of it, with a consistent style and a clear process, and a little bit of Jogja in every piece.</p>
   </div>
 </section>
 
-<section class="xsec xdark" id="pesan">
-  <div class="xwrap">
-    <div class="xhead"><div><h2>How to Order</h2><p>Four simple steps. Ordering needs no account; accounts are only for <a href="#gacha">Seeds Gacha</a>.</p></div><a class="xbtn" href="https://vgen.co" target="_blank" rel="noopener">Order on VGen</a></div>
-    <ol class="xsteps">
+<div class="band" data-pg="home"><img class="par" src="samurai.jpg" alt="Anime illustration of a white-haired swordswoman drawing a katana against a red background" style="object-position:50% 35%"><span class="cap">Seeds Studio · Jogja</span></div>
+
+<section class="svc3" id="layanan" data-pg="layanan">
+  <div class="wrap">
+    <div class="sz-ban">
+      <div class="sz-ban-tx"><span class="sz-eye">Commissions open · <span class="tag">sample prices</span></span><h2>Services</h2><p>Live2D, illustration, backgrounds and stingers for creators and VTubers.</p><a class="btn red" href="#pesan">Order <span aria-hidden="true">→</span></a></div>
+      <span class="sz-wm" aria-hidden="true">ꦮꦶꦗꦶ</span>
+    </div>
+    <div class="sz-tabs" id="sz-tabs" role="tablist" aria-label="Filter services"></div>
+    <div class="sz-grid" id="sz-grid"></div>
+  </div>
+</section>
+
+<section class="pf" id="karya" data-pg="karya">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><h2>Portfolio</h2><p>Selected works from the Seeds team, 2026.</p></div>
+      <div class="pf-filter" role="tablist" aria-label="Filter by category">
+        <button type="button" data-f="all" aria-pressed="true">All</button><button type="button" data-f="illust" aria-pressed="false">Illustration</button><button type="button" data-f="bg" aria-pressed="false">Background</button><button type="button" data-f="l2d" aria-pressed="false">Live2D</button><button type="button" data-f="stg" aria-pressed="false">Stinger</button>
+      </div>
+    </div>
+    <div class="pf-grid" id="pf-grid">
+      <button type="button" class="pf-item big" data-cat="illust bg" data-src="featured.jpg" data-title="Midnight Ramen" data-meta="Illustration + Background · 2026">
+        <img src="featured.jpg" alt="Midnight Ramen illustration" style="object-position:62% 50%">
+        <span class="pf-cap"><em>01</em><strong>Midnight Ramen</strong><small>Illustration + Background</small></span><span class="pf-zoom" aria-hidden="true">↗</span>
+      </button>
+      <button type="button" class="pf-item" data-cat="illust" data-src="girl.jpg" data-title="Ramen Girl" data-meta="Anime Illust · detail">
+        <img src="girl.jpg" alt="Detail of the girl eating ramen">
+        <span class="pf-cap"><em>02</em><strong>Ramen Girl</strong><small>Anime Illust · detail</small></span><span class="pf-zoom" aria-hidden="true">↗</span>
+      </button>
+      <button type="button" class="pf-item" data-cat="illust" data-src="hand.jpg" data-title="The Seed" data-meta="Anime Illust · sample title">
+        <img src="hand.jpg" alt="Illustration of a hand holding a red seed">
+        <span class="pf-cap"><em>03</em><strong>The Seed</strong><small>Anime Illust</small></span><span class="pf-zoom" aria-hidden="true">↗</span>
+      </button>
+      <button type="button" class="pf-item wide" data-cat="bg" data-src="street.jpg" data-title="Night Street" data-meta="Background · detail">
+        <img src="street.jpg" alt="Night city street background">
+        <span class="pf-cap"><em>04</em><strong>Night Street</strong><small>Background</small></span><span class="pf-zoom" aria-hidden="true">↗</span>
+      </button>
+      <div class="pf-item soon" data-cat="l2d"><i class="frog" aria-hidden="true"></i><span class="pf-cap"><em>05</em><strong>Live2D Model</strong><small>Coming soon</small></span></div>
+      <div class="pf-item soon" data-cat="stg"><i class="frog" aria-hidden="true"></i><span class="pf-cap"><em>06</em><strong>Stinger</strong><small>Coming soon</small></span></div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="team" id="tim" data-pg="tim">
+  <div class="wrap sec-head"><div><h2>Team Management</h2><p>The people behind every Seeds piece.</p></div><a class="btn red" href="#pesan">Work with us <span aria-hidden="true">→</span></a></div>
+  <div class="wrap team-panel">
+    <div class="team-row">
+      <article class="tm"><span class="tm-no">01</span>
+        <div class="tm-art"><i class="frog" aria-hidden="true"></i></div>
+        <div class="tm-body"><strong>Michael</strong><span>Founder &amp; Art Director, Designer</span></div>
+        <div class="tm-soc">
+          <a href="https://x.com" target="_blank" rel="noopener" aria-label="X Michael"><svg><use href="#i-x"/></svg><em>@michael</em></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram Michael"><svg><use href="#i-ig"/></svg><em>@michael</em></a>
+        </div>
+      </article>
+      <article class="tm"><span class="tm-no">02</span>
+        <div class="tm-art"><i class="frog" aria-hidden="true"></i></div>
+        <div class="tm-body"><strong>Imoo</strong><span>VTuber Artist, Illustration Artist</span></div>
+        <div class="tm-soc">
+          <a href="https://x.com" target="_blank" rel="noopener" aria-label="X Imoo"><svg><use href="#i-x"/></svg><em>@imoo</em></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram Imoo"><svg><use href="#i-ig"/></svg><em>@imoo</em></a>
+        </div>
+      </article>
+      <article class="tm"><span class="tm-no">03</span>
+        <div class="tm-art"><i class="frog" aria-hidden="true"></i></div>
+        <div class="tm-body"><strong>Zuno</strong><span>Rigger, Animator</span></div>
+        <div class="tm-soc">
+          <a href="https://x.com" target="_blank" rel="noopener" aria-label="X Zuno"><svg><use href="#i-x"/></svg><em>@zuno</em></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram Zuno"><svg><use href="#i-ig"/></svg><em>@zuno</em></a>
+        </div>
+      </article>
+      <article class="tm"><span class="tm-no">04</span>
+        <div class="tm-art"><img src="nel.jpg" alt="Nel's profile picture" style="object-position:50% 30%"></div>
+        <div class="tm-body"><strong>Nel</strong><span>Anime Illustration Artist</span></div>
+        <div class="tm-soc">
+          <a href="https://x.com" target="_blank" rel="noopener" aria-label="X Nel"><svg><use href="#i-x"/></svg><em>@nel</em></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram Nel"><svg><use href="#i-ig"/></svg><em>@nel</em></a>
+        </div>
+      </article>
+      <article class="tm"><span class="tm-no">05</span>
+        <div class="tm-art"><img src="defran.jpg" alt="Defran's profile picture"></div>
+        <div class="tm-body"><strong>Defran</strong><span>Anime Illustration &amp; Background Artist</span></div>
+        <div class="tm-soc">
+          <a href="https://www.instagram.com/dfanz__/" target="_blank" rel="noopener" aria-label="Instagram Defran (@dfanz__)"><svg><use href="#i-ig"/></svg><em>@dfanz__</em></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="order" id="pesan" data-pg="pesan">
+  <div class="wrap">
+    <div class="sec-head"><div><h2>How to Order</h2><p>Four simple steps. Ordering <b>needs no account</b>; accounts are only for <a href="#gacha">Seeds Gacha</a>.</p></div><a class="btn red" href="https://vgen.co" target="_blank" rel="noopener">Order on VGen <span aria-hidden="true">→</span></a></div>
+    <ol class="steps4">
       <li><strong>Send a brief</strong><span>DM us on X / Instagram or send a request on VGen.</span></li>
       <li><strong>Get a quote</strong><span>Pay a 50% deposit to secure your slot in the queue.</span></li>
       <li><strong>Review the sketch</strong><span>Request revisions before we move on to rendering.</span></li>
@@ -1257,21 +1189,21 @@ html{scroll-padding-top:64px}
   </div>
 </section>
 
-<section class="xsec xcomm">
-  <div class="xwrap">
-    <h2>Join the Seeds crew</h2>
+<section class="comm" data-pg="home">
+  <img src="street.jpg" alt="" aria-hidden="true">
+  <div class="wrap">
+    <a class="gpromo" href="#gacha"><span>New</span> Create an account and get 1 free Seeds Gacha pull →</a>
+    <h2>Join the Seeds crew<span class="dot">.</span></h2>
     <p>Follow us for slot openings, WIPs and giveaways.</p>
-    <div class="xsoc">
-      <a href="https://x.com" target="_blank" rel="noopener" aria-label="X"><svg><use href="#i-x"/></svg></a>
-      <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
-      <a href="https://vgen.co" target="_blank" rel="noopener" aria-label="VGen"><svg><use href="#i-v"/></svg></a>
+    <div class="socials">
+      <a class="ico" href="https://x.com" target="_blank" rel="noopener" aria-label="X"><svg><use href="#i-x"/></svg></a>
+      <a class="ico" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
+      <a class="ico" href="https://vgen.co" target="_blank" rel="noopener" aria-label="VGen"><svg><use href="#i-v"/></svg></a>
     </div>
   </div>
 </section>
 
 </div><!-- /home -->
-
-
 
 <main id="gacha" class="gacha" hidden>
   <div class="g-bg" aria-hidden="true">
@@ -1432,24 +1364,54 @@ html{scroll-padding-top:64px}
 <script src="js/sb.js"></script>
 <script>
 (()=>{
-  /* ---------- services (flat cards) ---------- */
-  (()=>{
-    const PK=[
-      {c:'Live2D',t:'Full Body Live2D Model',img:'girl.jpg',p:'Rp 7,500,000',d:'Full VTuber model from art to rigging, tracking-ready for VTube Studio.'},
-      {c:'Live2D',t:'Half Body Live2D Model',img:'nel.jpg',p:'Rp 4,500,000',d:'Waist-up model for streaming and chatting, with smooth head and body movement.'},
-      {c:'Illustration',t:'Illustration + Background',img:'featured.jpg',p:'Rp 1,500,000',d:'Your character in a fully painted scene, great for key visuals and banners.'},
-      {c:'Illustration',t:'Character Illustration',img:'hand.jpg',p:'Rp 650,000',d:'Anime-style character art, from bust to full body, with simple background.'},
-      {c:'Background',t:'Stream Background',img:'street.jpg',p:'Rp 900,000',d:'A 16:9 room or scene for your stream, layered so it can move with parallax.'},
-      {c:'Background',t:'Scene Background',img:'samurai.jpg',p:'Rp 1,200,000',d:'Detailed story or fantasy scenes for illustrations, MVs and covers.'},
-      {c:'Stinger',t:'Logo Stinger',p:'Rp 500,000',d:'A 1–2 second transition built around your logo, ready for OBS.'},
-      {c:'Stinger',t:'Mascot Stinger',p:'Rp 750,000',d:'Your mascot or chibi animated into a short stream transition.'}];
-    document.getElementById('xsv').innerHTML=PK.map(v=>`<article class="xsv-c"><div class="xsv-img">${v.img?`<img src="${v.img}" alt="${v.t} sample" loading="lazy">`:'<i class="frog" aria-hidden="true"></i><em>Samples soon</em>'}</div><small>${v.c}</small><div class="xsv-row"><h3>${v.t}</h3><b>from ${v.p}</b></div><p>${v.d}</p></article>`).join('');
+  /* ---------- home banner slider (auto-rotates like an ad) ---------- */
+  (()=>{const tr=document.getElementById('promo');if(!tr)return;
+    const sl=[...tr.querySelectorAll('.promo-slide')],dots=document.getElementById('promoDots');let i=0,t=null;
+    const show=n=>{i=(n+sl.length)%sl.length;sl.forEach((x,k)=>{x.classList.toggle('is-on',k===i);x.tabIndex=k===i?0:-1;x.setAttribute('aria-hidden',String(k!==i))});
+      [...dots.children].forEach((d,k)=>d.setAttribute('aria-selected',String(k===i)))};
+    sl.forEach((_,k)=>{const d=document.createElement('button');d.type='button';d.setAttribute('role','tab');d.setAttribute('aria-label','Banner '+(k+1));d.onclick=()=>{show(k);play()};dots.appendChild(d)});
+    const multi=sl.length>1;tr.classList.toggle('single',!multi);dots.hidden=!multi;
+    const play=()=>{clearInterval(t);if(multi&&!matchMedia('(prefers-reduced-motion: reduce)').matches)t=setInterval(()=>show(i+1),6000)};
+    tr.querySelector('.prev').onclick=()=>{show(i-1);play()};tr.querySelector('.next').onclick=()=>{show(i+1);play()};
+    tr.addEventListener('mouseenter',()=>clearInterval(t));tr.addEventListener('mouseleave',play);
+    let x0=null;tr.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});
+    tr.addEventListener('touchend',e=>{if(x0==null||!multi)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40){show(i+(dx<0?1:-1));play()}x0=null});
+    show(0);play();
   })();
-  /* ---------- portfolio lightbox ---------- */
-  (()=>{const lb=document.getElementById('pf-lb'),$=id=>document.getElementById(id);
-    document.getElementById('karya').addEventListener('click',e=>{const b=e.target.closest('button[data-src]');if(!b)return;
-      $('pf-lb-img').src=b.dataset.src;$('pf-lb-img').alt=b.querySelector('img').alt;$('pf-lb-t').textContent=b.dataset.title;$('pf-lb-m').textContent=b.dataset.meta;lb.showModal()});
-    $('pf-lb-x').onclick=()=>lb.close();lb.addEventListener('click',e=>{if(e.target===lb)lb.close()});
+  /* ---------- services: package cards ---------- */
+  (()=>{
+    /* one card per package or sample; img can be any size (it is never cropped). no img = frog placeholder */
+    const CATS=[['all','All'],['l2d','Live2D'],['il','Illustration'],['bg','Background'],['stg','Stinger']];
+    const PK=[
+      {c:'l2d',t:'Full Body Live2D Model',img:'girl.jpg',p:'Rp 7,500,000',d:'Full VTuber model from art to rigging, tracking-ready for VTube Studio.',inc:['Art + rigging','Toggle expressions','.moc3 + PSD','4–8 weeks']},
+      {c:'l2d',t:'Half Body Live2D Model',img:'nel.jpg',p:'Rp 4,500,000',d:'Waist-up model for streaming and chatting, with smooth head and body movement.',inc:['Art + rigging','4 expressions','.moc3 + PSD','3–6 weeks']},
+      {c:'il',t:'Illustration + Background',img:'featured.jpg',p:'Rp 1,500,000',d:'Your character in a fully painted scene, great for key visuals and banners.',inc:['Character + scene','Full render','Hi-res PNG','2–3 weeks']},
+      {c:'il',t:'Character Illustration',img:'hand.jpg',p:'Rp 650,000',d:'Anime-style character art, from bust to full body, with simple background.',inc:['Bust to full body','Full render','Hi-res PNG','1–2 weeks']},
+      {c:'bg',t:'Stream Background',img:'street.jpg',p:'Rp 900,000',d:'A 16:9 room or scene for your stream, layered so it can move with parallax.',inc:['16:9 scene','Layered PSD','Day / night','2–3 weeks']},
+      {c:'bg',t:'Scene Background',img:'samurai.jpg',p:'Rp 1,200,000',d:'Detailed story or fantasy scenes for illustrations, MVs and covers.',inc:['Any ratio','Layered PSD','Hi-res PNG','2–4 weeks']},
+      {c:'stg',t:'Logo Stinger',p:'Rp 500,000',soon:1,d:'A 1–2 second transition built around your logo, ready for OBS.',inc:['1–2 seconds','Transparent WebM','OBS ready','1–2 weeks']},
+      {c:'stg',t:'Mascot Stinger',p:'Rp 750,000',soon:1,d:'Your mascot or chibi animated into a short stream transition.',inc:['1–2 seconds','Transparent WebM','Sound optional','2–3 weeks']}];
+    const name=Object.fromEntries(CATS),tabs=document.getElementById('sz-tabs'),grid=document.getElementById('sz-grid');
+    tabs.innerHTML=CATS.map(([k,v])=>`<button type="button" role="tab" data-f="${k}">${v}</button>`).join('');
+    function show(f){
+      [...tabs.children].forEach(b=>b.setAttribute('aria-selected',b.dataset.f===f));
+      const L=PK.map((v,i)=>[v,i]).filter(([v])=>f==='all'||v.c===f);
+      grid.innerHTML=L.map(([v,i],n)=>`<article class="sz-card sz-row" style="animation-delay:${n*45}ms"><span class="sz-no">${String(i+1).padStart(2,'0')}</span><div class="sz-a"><small>${name[v.c]}</small><h3>${v.t}</h3><span class="sz-st${v.soon?' soon':''}">${v.soon?'Samples soon':'Open'}</span></div><div class="sz-b"><p>${v.d}</p><ul class="sz-inc">${v.inc.map(x=>`<li>${x}</li>`).join('')}</ul></div><div class="sz-c"><span class="sz-pr"><small>from</small><b>${v.p}</b></span><a class="btn red" href="#pesan">Order <span aria-hidden="true">→</span></a></div></article>`).join('')||'<p class="sz-empty">Nothing here yet.</p>';
+    }
+    tabs.addEventListener('click',e=>{const b=e.target.closest('button');if(b)show(b.dataset.f)});
+    grid.addEventListener('click',e=>{const im=e.target.closest('.sz-img');if(!im||im.disabled)return;const v=PK[+im.closest('.sz-card').dataset.i];
+      const lb=document.getElementById('pf-lb');document.getElementById('pf-lb-img').src=v.img;document.getElementById('pf-lb-img').alt=v.t+' sample';
+      document.getElementById('pf-lb-t').textContent=v.t;document.getElementById('pf-lb-m').textContent=name[v.c]+' · from '+v.p;lb.showModal()});
+    show('all');
+  })();
+  /* ---------- portofolio ---------- */
+  (()=>{const g=document.getElementById('pf-grid'),lb=document.getElementById('pf-lb');
+    document.querySelectorAll('.pf-filter button').forEach(b=>b.onclick=()=>{const f=b.dataset.f;
+      document.querySelectorAll('.pf-filter button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+      g.querySelectorAll('.pf-item').forEach(it=>it.classList.toggle('off',f!=='all'&&!it.dataset.cat.split(' ').includes(f)))});
+    g.querySelectorAll('button.pf-item').forEach(it=>it.onclick=()=>{document.getElementById('pf-lb-img').src=it.dataset.src;document.getElementById('pf-lb-img').alt=it.querySelector('img').alt;
+      document.getElementById('pf-lb-t').textContent=it.dataset.title;document.getElementById('pf-lb-m').textContent=it.dataset.meta;lb.showModal()});
+    document.getElementById('pf-lb-x').onclick=()=>lb.close();lb.addEventListener('click',e=>{if(e.target===lb)lb.close()});
   })();
   /* ---------- router ---------- */
   const home=document.getElementById('home'),gacha=document.getElementById('gacha');
@@ -1459,11 +1421,12 @@ html{scroll-padding-top:64px}
   const route=()=>{let h=location.hash;if(h==='#admin'&&ACC.adminResolved&&!ACC.admin){h='';location.hash=''}
     const g=h==='#gacha',l=h==='#masuk',a=h==='#akun',ad=h==='#admin';
     home.hidden=g||l||a||ad;gacha.hidden=!g;loginView.hidden=!l;akunView.hidden=!a;adminView.hidden=!ad;
-    // single page: nav items scroll to their section
-    const sec=['#layanan','#karya','#tim','#pesan'].includes(h)?document.querySelector(h):null;
+    // every nav item is its own page
+    const pg=['#layanan','#karya','#tim','#pesan'].includes(h)?h.slice(1):'home';
+    home.querySelectorAll('[data-pg]').forEach(el=>{el.hidden=el.dataset.pg!==pg});
     document.querySelectorAll('#tbMenu a').forEach(x=>x.toggleAttribute('aria-current',x.getAttribute('href')===h));
     document.body.classList.toggle('menu-open',false);document.getElementById('tbBurger').setAttribute('aria-expanded','false');
-    requestAnimationFrame(()=>{if(sec)sec.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});else scrollTo(0,0)});document.getElementById('udrop').hidden=true;document.getElementById('ubtn').setAttribute('aria-expanded','false');};
+    requestAnimationFrame(()=>scrollTo(0,0));document.getElementById('udrop').hidden=true;document.getElementById('ubtn').setAttribute('aria-expanded','false');};
   addEventListener('hashchange',route);route();
   document.getElementById('tbBurger').addEventListener('click',e=>{const o=!document.body.classList.contains('menu-open');document.body.classList.toggle('menu-open',o);e.currentTarget.setAttribute('aria-expanded',String(o))});
 

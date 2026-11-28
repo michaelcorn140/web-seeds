@@ -2,7 +2,7 @@
 
 Static site, no build step. Open `index.html` or deploy the folder as-is (GitHub Pages, Vercel, Netlify).
 
-- Fonts: Open Sauce Sans (body) and Anton (headings), both SIL Open Font License, self-hosted in `fonts/`.
+- Font: Open Sauce Sans (SIL Open Font License), self-hosted in `fonts/`.
 - Prices, slot count and most social links are still placeholders.
 
 ## Accounts & gacha (Supabase)
