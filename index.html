@@ -1082,6 +1082,13 @@ nav.topbar{view-transition-name:topbar}
 .intro p{color:#4a4446}
 .intro .salam{color:#8a8285}
 .band.top::after{background:#f3efe9}
+/* minimal footer */
+footer.fmini{padding-block:22px}
+.fmini .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.fmini .socials{display:flex;gap:6px;margin:0}
+.fmini small{font-size:12px;color:var(--muted)}
+.fmini small b{color:var(--red);font-weight:600}
+@media (max-width:600px){footer.fmini{padding-block:18px}.fmini .wrap{flex-direction:column;gap:8px}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1381,16 +1388,14 @@ nav.topbar{view-transition-name:topbar}
   </div>
 </main>
 
-<div class="kawung" aria-hidden="true"></div>
-<footer>
+<footer class="fmini">
   <div class="wrap">
-    <div class="fgrid">
-      <a class="navlogo" href="#top"><i class="frog" aria-hidden="true"></i><span>Seeds<br>Studio.</span></a>
-      <ul><li><a href="#top">Home</a></li><li><a href="#layanan">Services</a></li><li><a href="#karya">Portfolio</a></li></ul>
-      <ul><li><a href="https://vgen.co" target="_blank" rel="noopener">VGen</a></li><li><a href="https://x.com" target="_blank" rel="noopener">X</a></li><li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li></ul>
-      <div class="fcta"><small>Ready to commission?</small><a class="btn red" href="#pesan" style="justify-self:start">Start an order</a><small>Social links are placeholders.</small></div>
+    <div class="socials">
+      <a class="ico" href="https://x.com" target="_blank" rel="noopener" aria-label="X"><svg><use href="#i-x"/></svg></a>
+      <a class="ico" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
+      <a class="ico" href="https://vgen.co" target="_blank" rel="noopener" aria-label="VGen"><svg><use href="#i-v"/></svg></a>
     </div>
-    <div class="legal"><span>© 2026 Seeds Studio · <span class="jogja">Made in <b>Yogyakarta</b>, Indonesia. Matur nuwun!</span></span><span>www.seedstudio.com</span></div>
+    <small>© 2026 Seeds Studio · Made in <b>Yogyakarta</b></small>
   </div>
 </footer>
   <dialog class="pf-lb" id="pf-lb" aria-labelledby="pf-lb-t"><button type="button" class="pf-lb-x" id="pf-lb-x" aria-label="Close">×</button><img id="pf-lb-img" alt=""><div class="pf-lb-cap"><strong id="pf-lb-t"></strong><small id="pf-lb-m"></small></div></dialog>
