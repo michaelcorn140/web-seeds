@@ -1025,6 +1025,23 @@ nav.topbar{position:sticky;top:0;inset:auto;z-index:40;background:rgba(14,15,14,
 .promo .wrap{max-width:none;padding:0;position:relative}
 .promo-track{border:0;border-radius:0;box-shadow:none}
 .promo-dots{position:absolute;left:0;right:0;bottom:clamp(10px,2vw,22px);margin:0;z-index:3}
+/* ---------- clean pass: less texture, fewer frames ---------- */
+body::after{opacity:.07}
+.intro .batik,.intro::before{display:none}
+.kawung{opacity:.1}
+.tm::before{display:none}
+.tm-art .frog{background:var(--ink-2)!important}
+.tm-art .frog::after{display:none}
+.steps4 li{border:0;border-top:2px solid var(--ink-3);border-radius:0;background:none;padding:18px 0 0}
+.steps4 li:hover{border-color:var(--red)}
+.comm::before{background:linear-gradient(180deg,var(--ink) 0%,rgba(20,21,20,.82) 30%,rgba(20,21,20,.74) 70%,var(--ink) 100%)}
+.sz-card.sz-row{background:transparent;border:0;border-bottom:1px solid var(--ink-3);border-radius:0;padding-left:0;padding-right:0}
+.sz-grid{gap:0}
+.sz-card.sz-row:hover{border-color:var(--ink-3)}
+.sz-inc li{border:0;padding:0;border-radius:0;color:var(--muted)}
+.sz-inc li+li::before{content:"·";margin:0 8px 0 2px;color:var(--ink-3)}
+.sz-inc{gap:0}
+@media (max-width:600px){.sz-card.sz-row{padding:22px 0}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
