@@ -1064,6 +1064,18 @@ nav.topbar{view-transition-name:topbar}
 .intro{padding-block:clamp(56px,8vw,100px) clamp(64px,9vw,110px)}
 .intro .orn h2{font-size:clamp(30px,4vw,52px)}
 @media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),.pg-in{animation:none}.rv{opacity:1;transform:none;transition:none}}
+/* ---------- mobile pass ---------- */
+.sz-inc li{white-space:nowrap}
+@media (max-width:600px){
+ .intro{padding-block:48px 40px}
+ .intro .orn h2{font-size:30px}
+ .intro p{font-size:16px;line-height:1.65}
+ .comm{padding-block:64px 120px}
+ .sz-row{gap:10px}
+ .sz-row .sz-c{margin-top:6px}
+ .sz-inc{row-gap:4px}
+ .pf-item h3{font-size:22px}
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
