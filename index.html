@@ -1042,6 +1042,24 @@ body::after{opacity:.07}
 .sz-inc li+li::before{content:"·";margin:0 8px 0 2px;color:var(--ink-3)}
 .sz-inc{gap:0}
 @media (max-width:600px){.sz-card.sz-row{padding:22px 0}}
+/* ---------- motion: page transitions + scroll reveal ---------- */
+nav.topbar{view-transition-name:topbar}
+::view-transition-old(root){animation:vt-out .28s var(--ease) both}
+::view-transition-new(root){animation:vt-in .5s var(--ease) both}
+@keyframes vt-out{to{opacity:0;transform:translateY(-10px)}}
+@keyframes vt-in{from{opacity:0;transform:translateY(18px)}}
+.pg-in{animation:pg-in .55s var(--ease) both}
+@keyframes pg-in{from{opacity:0;transform:translateY(16px)}}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease) var(--rd,0ms),transform .7s var(--ease) var(--rd,0ms)}
+.rv.rv-in{opacity:1;transform:none}
+.pf-item.rv.off{opacity:.12}
+.topbar .navlinks a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--red);border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.topbar .navlinks a[aria-current]::after,.topbar .navlinks a:hover::after{transform:scaleX(1)}
+.topbar .navlinks .gl::after{background:var(--gold)}
+.btn{transition:background .25s,color .25s,transform .25s var(--ease),box-shadow .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0) scale(.97)}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),.pg-in{animation:none}.rv{opacity:1;transform:none;transition:none}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1435,7 +1453,7 @@ body::after{opacity:.07}
   const ACC={db:null,uid:null,me:null,admin:false,state:'loading',players:[],orders:[],out:false,flash:'',adminResolved:false};
   const loginView=document.getElementById('masuk');
   const akunView=document.getElementById('akun'),adminView=document.getElementById('admin');
-  const route=()=>{let h=location.hash;if(h==='#admin'&&ACC.adminResolved&&!ACC.admin){h='';location.hash=''}
+  const doRoute=()=>{let h=location.hash;if(h==='#admin'&&ACC.adminResolved&&!ACC.admin){h='';location.hash=''}
     const g=h==='#gacha',l=h==='#masuk',a=h==='#akun',ad=h==='#admin';
     home.hidden=g||l||a||ad;gacha.hidden=!g;loginView.hidden=!l;akunView.hidden=!a;adminView.hidden=!ad;
     // every nav item is its own page
@@ -1444,7 +1462,22 @@ body::after{opacity:.07}
     document.querySelectorAll('#tbMenu a').forEach(x=>x.toggleAttribute('aria-current',x.getAttribute('href')===h));
     document.body.classList.toggle('menu-open',false);document.getElementById('tbBurger').setAttribute('aria-expanded','false');
     requestAnimationFrame(()=>scrollTo(0,0));document.getElementById('udrop').hidden=true;document.getElementById('ubtn').setAttribute('aria-expanded','false');};
+  /* page change: smooth cross-fade (View Transitions) + fade-up of the new page */
+  const RM=matchMedia('(prefers-reduced-motion: reduce)');let lastH=null;
+  const pageKey=()=>{const h=location.hash;return ['#gacha','#masuk','#akun','#admin','#layanan','#karya','#tim','#pesan'].includes(h)?h:'home'};
+  const route=()=>{const k=pageKey(),changed=lastH!==null&&k!==lastH;lastH=k;
+    if(!changed||RM.matches){doRoute();return}
+    const after=()=>{const v=[...document.querySelectorAll('#home [data-pg]:not([hidden]),body>main:not([hidden])')];
+      v.forEach(el=>{el.classList.remove('pg-in');void el.offsetWidth;el.classList.add('pg-in')})};
+    if(document.startViewTransition){document.startViewTransition(()=>{doRoute();after()})}else{doRoute();after()}};
   addEventListener('hashchange',route);route();
+  /* scroll reveal */
+  (()=>{if(RM.matches||!('IntersectionObserver' in window))return;
+    const sel='.sec-head,.sv-head,.intro .wrap>*,.band,.pf-item,.tm,.steps4 li,.comm .wrap>*,.sz-ban,.sz-tabs,.fgrid>*';
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('rv-in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    document.querySelectorAll(sel).forEach(el=>{const sib=el.parentElement?[...el.parentElement.children].filter(x=>x.matches(sel)):[];
+      el.style.setProperty('--rd',Math.min(sib.indexOf(el),6)*70+'ms');el.classList.add('rv');io.observe(el)});
+  })();
   document.getElementById('tbBurger').addEventListener('click',e=>{const o=!document.body.classList.contains('menu-open');document.body.classList.toggle('menu-open',o);e.currentTarget.setAttribute('aria-expanded',String(o))});
 
   /* ---------- gacha ---------- */
